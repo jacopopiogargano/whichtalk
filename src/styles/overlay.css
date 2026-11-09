@@ -1,0 +1,291 @@
+/*
+  Overlays: the <dialog> elements for event details, panels, forms and the shortcuts list.
+  Centred from 641px; responsive.css turns them into bottom sheets on phones.
+*/
+
+/* ---- frame ---- */
+.overlay {
+  border: 0;
+  padding: 0;
+  color: var(--color-text);
+  background: var(--color-ground);
+  border-radius: 12px;
+  width: min(720px, calc(100vw - 48px));
+  max-width: none;
+  max-height: min(880px, calc(100dvh - 64px));
+  box-shadow: var(--shadow-float);
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform .2s var(--ease-out);
+}
+
+.overlay[open] {
+  display: flex;
+  animation: overlay-rise .2s var(--ease-out);
+}
+
+.overlay.is-dragging {
+  transition: none;
+}
+
+.overlay::backdrop {
+  background: var(--color-scrim);
+  animation: backdrop-fade .2s;
+}
+
+.overlay[data-kind=event],
+.overlay[data-kind=group] {
+  background: var(--color-panel);
+}
+
+.overlay[data-kind=event] .panel,
+.overlay[data-kind=group] .panel {
+  background: var(--color-panel);
+}
+
+@keyframes overlay-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- head, body, foot ---- */
+.overlay-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 54px;
+  padding: 10px 12px 8px 24px;
+  position: relative;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.overlay-head h2 {
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overlay-head .back-button,
+.overlay-head .icon-button[aria-label=Back] {
+  margin-left: -12px;
+}
+
+.overlay-head .icon-button[data-star][aria-pressed=true] {
+  color: var(--color-accent-mark);
+}
+
+.overlay-head .overlay-close {
+  width: 30px;
+  height: 30px;
+  color: var(--color-text-muted);
+  margin-left: 6px;
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+.overlay-head .overlay-close .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.overlay-handle {
+  display: none;
+}
+
+.overlay-body {
+  flex: 1;
+  overflow: auto;
+  padding: 8px 24px 32px;
+  overscroll-behavior: contain;
+}
+
+.overlay-foot {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 24px 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---- sections ---- */
+.overlay-section {
+  margin-top: 26px;
+}
+
+.overlay-section:first-child {
+  margin-top: 12px;
+}
+
+.overlay-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 8px;
+}
+
+.overlay-section > .panel + .key-values {
+  margin-top: 16px;
+}
+
+/* ---- expanders ---- */
+.expander > summary,
+.import-box > summary {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 6px 0;
+  list-style-position: inside;
+}
+
+.import-box {
+  margin-top: 20px;
+}
+
+.import-box > summary {
+  color: var(--color-text);
+}
+
+.expander[open] > summary,
+.import-box[open] > summary {
+  margin-bottom: 8px;
+}
+
+/* ---- options and toggles ---- */
+.item.is-option {
+  align-items: center;
+  min-height: 48px;
+  padding: 8px 14px 8px 16px;
+  cursor: pointer;
+}
+
+.item.is-option .item-title {
+  font-weight: 400;
+}
+
+label.item.is-option,
+div.item.is-option {
+  cursor: default;
+}
+
+.check-mark {
+  width: 20px;
+  flex: none;
+  color: var(--color-text);
+  display: grid;
+}
+
+.toggle {
+  width: 38px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--color-fill);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  position: relative;
+  flex: none;
+  transition: background .15s;
+}
+
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-panel);
+  box-shadow: 0 0 0 1px var(--color-border-strong);
+  transition: transform .15s var(--ease-out);
+}
+
+[aria-checked=true] > .toggle {
+  background: var(--color-primary);
+  box-shadow: none;
+}
+
+[aria-checked=true] > .toggle::after {
+  transform: translateX(16px);
+  box-shadow: none;
+  background: var(--color-on-primary);
+}
+
+/* ---- site select, snapshots, key-values, bullets ---- */
+select.site-select {
+  height: 32px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  padding: 0 8px;
+  font-size: 14px;
+  max-width: 60%;
+}
+
+.item.is-snapshot {
+  cursor: default;
+  align-items: center;
+}
+
+.key-values {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 20px;
+  font-size: 14px;
+  margin: 16px 0 0;
+}
+
+.key-values dt {
+  color: var(--color-text-muted);
+}
+
+.key-values dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+ul.bullets {
+  margin: 0;
+  padding: 4px 4px 0 20px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+ul.bullets li + li {
+  margin-top: 8px;
+}
+
+/* ---- skeletons ---- */
+.is-skeleton {
+  height: 12px;
+  border-radius: 3px;
+  background: var(--color-fill);
+  margin: 8px 0;
+  flex: 1;
+}
+
+.is-skeleton.is-short {
+  width: 70%;
+  flex: none;
+}

@@ -1,0 +1,65 @@
+{
+  "id": "example-2026",
+  "name": "ExampleConf 2026",
+  "shortName": "ExampleConf",
+  "output": "_site/example/2026",
+  "page": {
+    "title": "WhichTalk · ExampleConf 2026 (demo)",
+    "description": "A demo of WhichTalk with a made-up conference: every talk, person and room on this page is invented.",
+    "ogDescription": "A demo of WhichTalk with a made-up conference.",
+    "canonical": "https://whichtalk.com/example/2026/",
+    "officialSchedule": "https://example.org/",
+    "organizer": "the ExampleConf organizers",
+    "sourceName": "example.org"
+  },
+  "home": { "listed": false, "summary": "Lisbon · October 2026 · demo data", "badge": "’26" },
+  "defaultLocation": "LIS",
+  "locations": [
+    { "key": "LIS", "name": "Lisbon", "utcOffsetHours": 1, "zone": "WEST", "venue": "Riverside Congress Centre" }
+  ],
+  "tracks": [
+    { "key": "keynote", "label": "Keynotes", "singular": "Keynote", "kinds": ["Keynote"] },
+    { "key": "tutorial", "label": "Tutorials", "singular": "Tutorial", "kinds": ["Tutorial"] },
+    { "key": "talk", "label": "Talks", "singular": "Talk", "kinds": ["Talk", "Talk Session"], "papers": true },
+    { "key": "poster", "label": "Posters", "singular": "Poster", "kinds": ["Poster", "Poster Session"], "papers": true },
+    { "key": "demo", "label": "Demos", "singular": "Demo", "kinds": ["Demo"] },
+    { "key": "workshop", "label": "Workshops", "singular": "Workshop", "kinds": ["Workshop"] },
+    { "key": "social", "label": "Socials", "singular": "Social", "kinds": ["Reception", "Meetup"] },
+    { "key": "break", "label": "Breaks", "singular": "Break", "kinds": ["Break"] }
+  ],
+  "hiddenTracks": ["break"],
+  "fallbackTrack": "social",
+  "kindLabels": { "Talk Session": "Talk session" },
+  "dayLabels": [
+    { "label": "Tutorials", "tracks": ["tutorial"] },
+    { "label": "Workshops", "tracks": ["workshop"] },
+    { "label": "Main", "title": "Main conference", "tracks": ["keynote", "talk", "poster", "demo"] }
+  ],
+  "containerKinds": ["Talk Session"],
+  "genericSessionTitles": "Poster Session|Talk Session",
+  "notes": {
+    "untimed": "Not in the program yet. These sessions get a time and a room once the organizers publish them."
+  },
+  "venue": {
+    "name": "Riverside Congress Centre",
+    "location": "LIS",
+    "about": "Made-up venue: a north building (Auditorium, rooms N1 to N4 on levels 1 and 2) and a south pavilion (South Hall, Garden Terrace), linked by a covered walkway.",
+    "zones": [
+      { "pattern": "^auditorium$", "building": "north", "level": 0, "zone": "Auditorium" },
+      { "pattern": "^n([12])\\.\\d$", "building": "north", "level": "$1", "zone": "North building, level $1" },
+      { "pattern": "^south hall$", "building": "south", "level": 0, "zone": "South Hall" },
+      { "pattern": "^garden terrace$", "building": "south", "level": 0, "zone": "Garden Terrace" }
+    ],
+    "walkMinutes": { "north|south": 5 },
+    "sameZoneMinutes": 1,
+    "sameBuildingBaseMinutes": 2,
+    "minutesPerLevel": 1,
+    "unknownLevelChange": 1,
+    "upstairsMinutes": 1
+  },
+  "theme": {
+    "light": { "accent": "#047857", "accentMark": "#059669", "accentSoft": "#e1f3ec" },
+    "dark": { "accent": "#34d399", "accentMark": "#34d399", "accentSoft": "#0c2a21" }
+  },
+  "source": { "type": "events-file", "path": "events.json" }
+}

@@ -1,0 +1,20 @@
+{
+  "format": "whichtalk-events",
+  "version": 1,
+  "events": [
+    { "id": 100, "kind": "Keynote", "title": "Opening keynote", "authors": ["Ada Lovelace"], "room": "Auditorium",
+      "start": "2026-10-12T09:00", "durationMinutes": 60, "abstract": "Why engines matter.",
+      "institutions": ["Analytical Society"], "topic": "History" },
+    { "id": 200, "kind": "Talk Session", "title": "Talk Session 1", "room": "Room 1.1",
+      "start": "2026-10-12T10:30", "end": "2026-10-12T12:00" },
+    { "id": 201, "kind": "Talk", "title": "First talk", "authors": ["Alan Turing", "Grace Hopper"], "room": "Room 1.1",
+      "start": "2026-10-12T10:30+01:00", "durationMinutes": 20, "parent": 200, "abstract": "On computable numbers.",
+      "openreviewId": "abc-123", "links": [["Slides", "https://alpha.example/slides/201"]] },
+    { "id": 202, "kind": "Talk", "title": "Second talk", "authors": ["Edsger Dijkstra"], "room": "Room 1.1",
+      "start": "2026-10-12T09:50Z", "end": "2026-10-12T10:10Z", "parent": 200 },
+    { "id": 300, "kind": "Poster", "title": "A poster in New York", "authors": ["Barbara Liskov"], "room": "Hall B",
+      "location": "NYC", "start": "2026-10-12T14:00", "durationMinutes": 90, "poster": true },
+    { "id": 400, "kind": "Break", "title": "Lunch", "room": "South Hall", "start": "2026-10-12T12:00", "durationMinutes": 60 },
+    { "id": 500, "kind": "Meetup", "title": "Meetup without a time", "abstract": null, "room": null }
+  ]
+}

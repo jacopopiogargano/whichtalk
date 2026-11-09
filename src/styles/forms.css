@@ -1,0 +1,148 @@
+/* Forms and dialog content: field grids, diff counts, choices, QR codes, helper text, shortcuts. */
+
+/* ---- form grid and fields ---- */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.form-grid .is-full {
+  grid-column: 1 / -1;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---- diff grid ---- */
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1px;
+  margin: 12px 0 16px;
+  background: var(--color-border);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.diff-grid div {
+  padding: 12px 14px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  background: var(--color-panel);
+}
+
+.diff-grid b {
+  display: block;
+  font-size: 20px;
+  color: var(--color-text);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- choice list ---- */
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.choice-list label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.choice-list label + label {
+  border-top: 1px solid var(--color-divider);
+}
+
+.choice-list input {
+  margin-top: 4px;
+  accent-color: var(--color-text);
+}
+
+.choice-list b {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.choice-list small {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+/* ---- QR code (always on white so it scans) ---- */
+.qr-code {
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  width: fit-content;
+  margin: 8px auto 12px;
+}
+
+.qr-code svg {
+  display: block;
+  width: min(280px, 70vw);
+  height: auto;
+}
+
+/* ---- helper text ---- */
+.helper {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.helper.is-centered,
+.actions.is-centered {
+  text-align: center;
+  justify-content: center;
+}
+
+#dialog .overlay-body > .helper:first-child {
+  margin-top: 8px;
+}
+
+/* ---- keyboard shortcuts ---- */
+.shortcuts dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 12px 20px;
+  margin: 12px 0 0;
+  font-size: 15px;
+}
+
+.shortcuts dd {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.shortcuts .overlay-body p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  margin-top: 20px;
+}

@@ -1,0 +1,225 @@
+/* Account panel, part one: interests, weight steppers, checkboxes and autocomplete. */
+
+/* ---- interest list ---- */
+.interest-list {
+  display: flex;
+  flex-direction: column;
+  margin: 12px 0 0;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.interest {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto 34px 34px;
+  gap: 8px;
+  align-items: center;
+  min-height: 48px;
+  padding: 6px 8px 6px 16px;
+  position: relative;
+}
+
+.interest + .interest::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+.interest.is-readonly {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+}
+
+.interest .interest-text {
+  overflow-wrap: anywhere;
+  font-size: 15px;
+  text-align: left;
+}
+
+.interest .interest-text small {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.interest.is-paused .interest-text {
+  color: var(--color-text-muted);
+}
+
+.interest .interest-count {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- weight stepper ---- */
+.weight {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  padding: 1px;
+}
+
+.weight .weight-value {
+  min-width: 28px;
+  text-align: center;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.interest .step,
+.interest .remove {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-control);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.interest .step:hover,
+.interest .remove:hover {
+  background: var(--color-fill);
+  color: var(--color-text);
+}
+
+.interest .step .icon,
+.interest .remove .icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* ---- checkbox ---- */
+.checkbox {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-align: left;
+  min-height: 32px;
+}
+
+.checkbox i {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-chip);
+  box-shadow: inset 0 0 0 1.5px var(--color-border-strong);
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.checkbox[aria-pressed=true] i {
+  background: var(--color-primary);
+  box-shadow: none;
+}
+
+.checkbox[aria-pressed=true] i::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border: solid var(--color-on-primary);
+  border-width: 0 0 2px 2px;
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+/* ---- autocomplete and form fields ---- */
+.autocomplete {
+  position: relative;
+}
+
+.autocomplete-row {
+  display: flex;
+  gap: 8px;
+}
+
+.autocomplete input,
+.autocomplete-row input,
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  padding: 0 12px;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-field textarea {
+  padding: 10px 12px;
+  min-height: 104px;
+  height: auto;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.autocomplete input:focus,
+.autocomplete-row input:focus,
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  border-color: var(--color-text);
+  box-shadow: 0 0 0 1px var(--color-text);
+}
+
+.autocomplete-row .button {
+  height: 40px;
+}
+
+.autocomplete-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 6px);
+  z-index: 30;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-float);
+  padding: 4px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.autocomplete-option {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius-control);
+  font-size: 15px;
+}
+
+.autocomplete-option small {
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.autocomplete-option .tally-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  width: 48px;
+  flex: none;
+}
+
+.autocomplete-option[aria-selected=true],
+.autocomplete-option:hover {
+  background: var(--color-fill);
+}

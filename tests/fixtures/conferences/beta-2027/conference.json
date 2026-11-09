@@ -1,0 +1,28 @@
+{
+  "id": "beta-2027",
+  "name": "Beta 2027",
+  "shortName": "Beta",
+  "output": "docs/beta/2027",
+  "page": {
+    "title": "WhichTalk · Beta 2027",
+    "description": "Smallest test conference.",
+    "ogDescription": "Smallest test conference.",
+    "canonical": "https://whichtalk.com/beta/2027/",
+    "officialSchedule": "https://beta.example/program",
+    "organizer": "the Beta organizers",
+    "sourceName": "beta.example"
+  },
+  "home": { "listed": true, "summary": "Berlin & Potsdam · June 2027", "badge": "’27" },
+  "defaultLocation": "BER",
+  "locations": [
+    { "key": "BER", "name": "Berlin", "utcOffsetHours": 2, "zone": "CEST", "venue": "Messe" }
+  ],
+  "tracks": [
+    { "key": "talk", "label": "Talks", "singular": "Talk", "kinds": ["Talk"] },
+    { "key": "other", "label": "Other", "singular": "Event", "kinds": [] }
+  ],
+  "hiddenTracks": [],
+  "fallbackTrack": "other",
+  "kindLabels": {},
+  "source": { "type": "events-file" }
+}

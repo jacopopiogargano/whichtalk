@@ -1,0 +1,42 @@
+/* Printing: content only, no chrome. */
+
+@media print {
+  body {
+    display: block;
+    background: #fff;
+  }
+
+  .rail,
+  .bottom-nav,
+  .overlay,
+  .snackbar,
+  .page-head .page-tools,
+  .controls,
+  .toggle-group,
+  .notice,
+  .star-toggle,
+  .vote,
+  .item-actions,
+  .page-footer,
+  .tally,
+  .timeline {
+    display: none !important;
+  }
+
+  .page {
+    max-width: none;
+    padding: 0;
+  }
+
+  .panel {
+    border: 0;
+  }
+
+  .item {
+    break-inside: avoid;
+  }
+
+  .timeslot {
+    content-visibility: visible;
+  }
+}

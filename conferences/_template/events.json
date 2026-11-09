@@ -1,0 +1,60 @@
+{
+  "format": "whichtalk-events",
+  "version": 1,
+  "events": [
+    {
+      "id": 1,
+      "kind": "Keynote",
+      "title": "Opening keynote",
+      "authors": ["First Speaker"],
+      "room": "Main Hall",
+      "start": "2027-06-08T09:00",
+      "durationMinutes": 60,
+      "abstract": "What the talk is about, as published in the program.",
+      "institutions": ["Speaker's university"]
+    },
+    {
+      "id": 2,
+      "kind": "Session",
+      "title": "Session 1: Topic of the session",
+      "room": "Room 101",
+      "start": "2027-06-08T10:30",
+      "end": "2027-06-08T12:00"
+    },
+    {
+      "id": 3,
+      "kind": "Talk",
+      "title": "A paper presented in session 1",
+      "authors": ["Author One", "Author Two"],
+      "room": "Room 101",
+      "start": "2027-06-08T10:30",
+      "durationMinutes": 20,
+      "parent": 2,
+      "abstract": "The paper's abstract.",
+      "topic": "Topic of the session",
+      "links": [["Paper", "https://yourconf.org/2027/papers/3"]]
+    },
+    {
+      "id": 4,
+      "kind": "Poster",
+      "title": "A poster",
+      "authors": ["Author Three"],
+      "room": "Exhibit Hall",
+      "start": "2027-06-08T14:00",
+      "durationMinutes": 120
+    },
+    {
+      "id": 5,
+      "kind": "Break",
+      "title": "Lunch",
+      "room": "Foyer",
+      "start": "2027-06-08T12:00",
+      "durationMinutes": 60
+    },
+    {
+      "id": 6,
+      "kind": "Workshop",
+      "title": "A workshop without a time yet"
+    }
+  ]
+}

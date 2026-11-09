@@ -1,0 +1,151 @@
+/* Page frame: toggle groups, the content column and footer, page heads, the crumb. */
+
+/* ---- toggle groups (view switches, day picker) ---- */
+.toggle-group {
+  display: inline-flex;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-control);
+  background: var(--color-panel);
+  overflow: hidden;
+}
+
+.toggle-group button {
+  height: 32px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.toggle-group button + button {
+  box-shadow: inset 1px 0 0 var(--color-border-strong);
+}
+
+.toggle-group button:hover {
+  background: var(--color-panel-alt);
+  color: var(--color-text);
+}
+
+.toggle-group button[aria-pressed=true] {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: none;
+}
+
+.toggle-group button[aria-pressed=true] + button {
+  box-shadow: none;
+}
+
+/* ---- content column and footer ---- */
+.page {
+  max-width: calc(var(--content-width) + 80px);
+  margin: 0 auto;
+  padding: 0 40px 56px;
+}
+
+.page-footer {
+  max-width: calc(var(--content-width) + 80px);
+  margin: 0 auto;
+  padding: 20px 40px 48px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.page-footer p {
+  margin: 0 0 8px;
+  max-width: 72ch;
+}
+
+.page-footer b {
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.page-footer a {
+  color: var(--color-text-muted);
+}
+
+.page-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.page.is-entering {
+  animation: fade-in .18s var(--ease-out);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---- page head ---- */
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 36px 0 4px;
+}
+
+.page-head h1 {
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.02em;
+}
+
+.page-head .page-meta {
+  margin-top: 6px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.page-head .page-tools {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* ---- crumb ---- */
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-top: 24px;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.crumb:hover {
+  color: var(--color-text);
+}
+
+.crumb .icon {
+  width: 18px;
+  height: 18px;
+  margin-left: -4px;
+}
+
+.crumb + .page-head {
+  padding-top: 10px;
+}

@@ -1,0 +1,7 @@
+{
+  "format": "whichtalk-events",
+  "version": 1,
+  "events": [
+    { "id": 1, "kind": "Talk", "title": "A talk", "start": "2027-06-08T09:00", "durationMinutes": 30 }
+  ]
+}

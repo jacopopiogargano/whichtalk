@@ -1,0 +1,259 @@
+/* Today: date heading, what is next, nudges, the plan tally and the day timeline. */
+
+/* ---- intro ---- */
+.intro {
+  padding: 36px 0 0;
+}
+
+.intro-title {
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  color: var(--color-text);
+}
+
+.intro-meta {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.next-up {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--color-text);
+  text-align: left;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+
+.next-up + .next-up {
+  margin-top: 8px;
+}
+
+.next-up b {
+  flex: none;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.next-up.is-live b {
+  color: var(--color-alert-text);
+}
+
+button.next-up:hover {
+  border-color: var(--color-border-strong);
+}
+
+.next-up.is-quiet {
+  color: var(--color-text-muted);
+}
+
+/* ---- nudges ---- */
+.nudges {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.nudge {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.nudge:hover {
+  border-color: var(--color-control);
+}
+
+.nudge.is-warn {
+  color: var(--color-alert-text);
+  border-color: transparent;
+  background: var(--color-alert-soft);
+}
+
+/* ---- tally ---- */
+.tally {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 24px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+}
+
+.tally-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px 16px;
+  text-align: left;
+  min-width: 0;
+}
+
+.tally-cell + .tally-cell {
+  box-shadow: inset 1px 0 0 var(--color-border);
+}
+
+.tally-cell:hover {
+  background: var(--color-panel-alt);
+}
+
+.tally-cell .tally-label {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.tally-cell .tally-value {
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.tally-cell .tally-value.is-zero {
+  color: var(--color-text-muted);
+}
+
+.tally-cell .tally-value.is-warn {
+  color: var(--color-alert-text);
+}
+
+.tally-cell .tally-note {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+
+/* ---- timeline (JS sets --lanes on the track) ---- */
+.timeline {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.timeline-track {
+  position: relative;
+  height: calc(var(--lanes, 1) * 26px + 2px);
+}
+
+.timeline-hour {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-divider);
+}
+
+.timeline-bar {
+  position: absolute;
+  height: 22px;
+  border-radius: var(--radius-chip);
+  background: var(--color-accent-soft);
+  box-shadow: inset 3px 0 0 var(--color-accent);
+  padding: 0 6px 0 9px;
+  font-size: 12px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.timeline-bar:hover {
+  background: color-mix(in srgb, var(--color-accent-soft) 70%, var(--color-accent) 12%);
+}
+
+.timeline-bar.is-clash {
+  background: var(--color-alert-soft);
+  box-shadow: inset 3px 0 0 var(--color-alert);
+}
+
+.timeline-bar.is-personal {
+  background: var(--color-panel);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  padding-left: 6px;
+}
+
+.timeline-bar.is-past {
+  opacity: .6;
+}
+
+.timeline-now {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--color-alert);
+  border-radius: 1px;
+}
+
+.timeline-axis {
+  position: relative;
+  height: 16px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-axis span {
+  position: absolute;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.timeline-axis span:first-child {
+  transform: none;
+}
+
+.timeline-axis span.is-end {
+  transform: translateX(-100%);
+}
+
+.timeline-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-chip);
+}
+
+/* Two tally cells per row on narrow screens. */
+@media (max-width: 760px) {
+  .tally {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tally-cell:nth-child(3) {
+    box-shadow: inset 0 1px 0 var(--color-border);
+  }
+
+  .tally-cell:nth-child(4) {
+    box-shadow: inset 1px 0 0 var(--color-border), inset 0 1px 0 var(--color-border);
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "id": "neurips-2026",
+  "name": "NeurIPS 2026",
+  "shortName": "NeurIPS",
+  "storageNamespace": "whichtalk:neurips-2026:",
+  "output": "docs/neurips/2026",
+  "page": {
+    "title": "WhichTalk · NeurIPS 2026",
+    "description": "Which talk are you going to? WhichTalk is a free, fast, offline-friendly planner for the NeurIPS 2026 schedule. Unofficial. Everything stays on your device.",
+    "ogDescription": "Which talk are you going to? A free, fast, offline-friendly planner for NeurIPS 2026.",
+    "canonical": "https://whichtalk.com/neurips/2026/",
+    "officialSchedule": "https://neurips.cc/Conferences/2026/Schedule",
+    "organizer": "the NeurIPS Foundation",
+    "sourceName": "neurips.cc"
+  },
+  "home": { "listed": true, "summary": "Sydney, Paris and Atlanta · December 2026", "badge": "’26" },
+  "urls": {
+    "event": "https://neurips.cc/Conferences/2026/Schedule?showEvent={id}",
+    "poster": "https://neurips.cc/media/PosterPDFs/NeurIPS%202026/{id}.png",
+    "openreview": "https://openreview.net/forum?id={openreviewId}"
+  },
+  "defaultLocation": "SYD",
+  "locations": [
+    { "key": "SYD", "name": "Sydney", "utcOffsetHours": 11, "zone": "AEDT", "venue": "ICC Sydney" },
+    { "key": "PAR", "name": "Paris", "utcOffsetHours": 1, "zone": "CET", "venue": "Paris" },
+    { "key": "ATL", "name": "Atlanta", "utcOffsetHours": -5, "zone": "EST", "venue": "Atlanta" },
+    { "key": "ALL", "name": "All sites", "utcOffsetHours": 11, "zone": "AEDT", "venue": "", "all": true }
+  ],
+  "tracks": [
+    { "key": "keynote", "label": "Keynotes", "singular": "Keynote",
+      "kinds": ["Sydney Invited Talk", "Paris Invited Talk", "Atlanta Invited Talk", "Invited Talk", "Test Of Time", "Award"] },
+    { "key": "tutorial", "label": "Tutorials", "singular": "Tutorial", "kinds": ["Tutorial"] },
+    { "key": "oral", "label": "Orals", "singular": "Oral", "kinds": ["Oral", "Oral Session"], "papers": true },
+    { "key": "poster", "label": "Posters", "singular": "Poster", "papers": true,
+      "kinds": ["Poster", "Session", "Bridging the Future Poster", "Affinity Poster Session"] },
+    { "key": "workshop", "label": "Workshops", "singular": "Workshop", "kinds": ["Workshop", "Competition"] },
+    { "key": "expo", "label": "Expo", "singular": "Expo", "kinds": ["Expo Talk Panel", "Expo Demonstration", "Expo Workshop"] },
+    { "key": "community", "label": "Community", "singular": "Community", "kinds": [] },
+    { "key": "break", "label": "Breaks", "singular": "Break", "kinds": ["Break"] }
+  ],
+  "hiddenTracks": ["break"],
+  "fallbackTrack": "community",
+  "kindLabels": {
+    "Session": "Poster session",
+    "*Invited Talk": "Keynote",
+    "Test Of Time": "Test of Time"
+  },
+  "dayLabels": [
+    { "label": "Expo", "tracks": ["expo"] },
+    { "label": "Tutorials", "tracks": ["tutorial"] },
+    { "label": "Workshops", "tracks": ["workshop"] },
+    { "label": "Main", "title": "Main conference", "tracks": ["keynote", "oral", "poster"] }
+  ],
+  "containerKinds": ["Oral Session"],
+  "genericSessionTitles": "Poster Session|Oral Session",
+  "notes": {
+    "untimed": "Not yet in the public schedule. Sydney oral sessions run Tuesday to Thursday, 15:30 to 16:30. This list updates when neurips.cc assigns times."
+  },
+  "venue": {
+    "name": "ICC Sydney",
+    "location": "SYD",
+    "about": "Approximate model of ICC Sydney, from its public 'Entrance and venue levels' page: the Convention Centre (north, by Cockle Bay) holds the Grand Ballroom, Parkside Ballroom, Darling Harbour Theatre, Pyrmont Theatre, the Cockle Bay rooms and the meeting rooms; the Exhibition Centre (middle) has lower halls 1-4 and upper halls 5-7; the TikTok Entertainment Centre is at the southern end. Levels of C2.x, C3.x, C4.x and E5.x rooms come from the room codes; other levels are unverified, so an unknown level counts as a level change.",
+    "zones": [
+      { "pattern": "\\bc([2-4])\\.\\d", "building": "convention", "level": "$1", "zone": "Convention Centre rooms, level $1" },
+      { "pattern": "^hall\\s*(1-4|[1-4])$", "building": "exhibition", "level": 0, "zone": "Exhibition halls 1 to 4 (lower)" },
+      { "pattern": "^hall\\s*[5-7]$", "building": "exhibition", "level": 1, "zone": "Exhibition halls 5 to 7 (upper)" },
+      { "pattern": "\\be5\\.", "building": "exhibition", "level": 5, "zone": "Exhibition Centre rooms, level 5" },
+      { "pattern": "tiktok", "building": "tiktok", "level": 0, "zone": "TikTok Entertainment Centre" },
+      { "pattern": "darling harbour theatre", "building": "convention", "level": null, "zone": "Darling Harbour Theatre" },
+      { "pattern": "pyrmont theatre", "building": "convention", "level": null, "zone": "Pyrmont Theatre" },
+      { "pattern": "grand (ballroom|br)\\b", "building": "convention", "level": null, "zone": "Grand Ballroom" },
+      { "pattern": "parkside", "building": "convention", "level": null, "zone": "Parkside Ballroom" },
+      { "pattern": "cockle bay", "building": "convention", "level": null, "zone": "Cockle Bay rooms" }
+    ],
+    "walkMinutes": { "convention|exhibition": 8, "exhibition|tiktok": 7, "convention|tiktok": 13 },
+    "sameZoneMinutes": 2,
+    "sameBuildingBaseMinutes": 3,
+    "minutesPerLevel": 2,
+    "unknownLevelChange": 1.5,
+    "upstairsMinutes": 2
+  },
+  "source": {
+    "type": "neurips-cc",
+    "scheduleUrl": "https://neurips.cc/Conferences/2026/Schedule",
+    "papersExportUrl": "https://neurips.cc/static/virtual/data/neurips-2026-orals-posters.json",
+    "userAgent": "whichtalk/1 (+https://whichtalk.com; unofficial NeurIPS schedule viewer; polite cached crawler, 1 req/s)",
+    "crawlDelaySeconds": 1.2,
+    "maxNewPerRun": 300,
+    "minEvents": 1000,
+    "schedule": { "year": 2026, "zoneLabel": "AEDT", "utcOffsetHours": 11 },
+    "locationRules": {
+      "names": { "Sydney": "SYD", "Paris": "PAR", "Atlanta": "ATL" },
+      "titleKinds": ["Session", "Oral Session"],
+      "venues": [
+        { "location": "SYD", "pattern": "TikTok|Darling Harbour|Grand B|Parkside|Pyrmont|Cockle Bay|^Hall [1-5](-4)?$|^(MR |Room )?C\\d\\.\\d|^MR E\\d" },
+        { "location": "PAR", "pattern": "Palais|Amphith|Paris|Sorbonne|Salle|^Room 15\\d" },
+        { "location": "ATL", "pattern": "^Hall C\\d|^C\\d{3}" }
+      ],
+      "untimed": { "Oral": "SYD" },
+      "untimedDefault": "TBA",
+      "localHours": { "location": "SYD", "from": 7.5, "until": 19, "otherwise": "OTHER" }
+    },
+    "detailPages": {
+      "base": "https://neurips.cc/virtual/2026",
+      "locationSlugs": { "SYD": "sydney", "PAR": "paris", "ATL": "atlanta" },
+      "kindPaths": { "Poster": "poster", "Bridging the Future Poster": "poster", "Oral": "oral" },
+      "plainUrlOn404": ["oral"],
+      "skipKinds": ["Break"]
+    },
+    "paperKinds": ["Poster", "Oral", "Bridging the Future Poster"],
+    "linkPatterns": {
+      "openreview": "^https://openreview\\.net/forum\\?id=([\\w-]+)$",
+      "poster": "^https://neurips\\.cc/media/PosterPDFs/NeurIPS%202026/(\\d+)\\.png"
+    }
+  }
+}

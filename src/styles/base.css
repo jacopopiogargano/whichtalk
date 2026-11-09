@@ -1,0 +1,159 @@
+/* Element defaults and the small utilities every view relies on. */
+
+/* ---- elements ---- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ground);
+  color: var(--color-text);
+  font: 400 14px/1.5 var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  caret-color: var(--color-text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: inherit;
+}
+
+button:disabled {
+  color: var(--color-text-muted);
+  cursor: default;
+  opacity: .6;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  text-wrap: pretty;
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-mark);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Rows, cards, bars and blocks sit in containers that clip overflow, so their focus ring is drawn inside. */
+.item:focus-visible,
+.paper:focus-visible,
+.pick-card:focus-visible,
+.block:focus-visible,
+.gap-pick:focus-visible,
+.timeline-bar:focus-visible {
+  outline-offset: -2px;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+mark {
+  background: var(--color-highlight);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+
+/* ---- utilities ---- */
+[hidden] {
+  display: none !important;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  flex: none;
+  vertical-align: -3px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dim {
+  color: var(--color-text-muted);
+}
+
+.fill {
+  flex: 1;
+  min-width: 0;
+}
+
+.text-clash {
+  color: var(--color-alert-text);
+}
+
+time,
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+kbd {
+  font: 500 12px/18px var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-chip);
+  padding: 0 5px;
+  background: var(--color-panel);
+  color: var(--color-text-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

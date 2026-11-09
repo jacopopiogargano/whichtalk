@@ -1,0 +1,198 @@
+/* Tablets and phones. Kept after every component so these overrides win ties. */
+
+@media (max-width: 1023px) {
+  .page,
+  .page-footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .rail.is-searching .wordmark {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .pick-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pick-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .rail-inner {
+    height: 52px;
+    padding: 0 10px 0 16px;
+  }
+
+  .nav-tabs {
+    display: none !important;
+  }
+
+  .search-field {
+    max-width: none;
+  }
+
+  .bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
+    background: var(--color-panel);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .bottom-nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    min-height: 50px;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    position: relative;
+  }
+
+  .bottom-nav .icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .bottom-nav button[aria-selected=true] {
+    color: var(--color-text);
+  }
+
+  .bottom-nav button[aria-selected=true]::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--color-text);
+  }
+
+  .bottom-nav .count {
+    position: absolute;
+    top: 4px;
+    left: calc(50% + 6px);
+  }
+
+  .page {
+    padding: 0 16px 40px;
+  }
+
+  .page-footer {
+    padding: 16px 16px 104px;
+  }
+
+  .intro,
+  .page-head {
+    padding-top: 24px;
+  }
+
+  .intro-title,
+  .page-head h1 {
+    font-size: 24px;
+  }
+
+  .section {
+    margin-top: 28px;
+  }
+
+  .item {
+    padding-left: 14px;
+    gap: 12px;
+  }
+
+  .item-time {
+    width: 56px;
+  }
+
+  .paper {
+    padding-left: 14px;
+  }
+
+  .tally-cell .tally-value {
+    font-size: 22px;
+  }
+
+  .overlay {
+    width: 100vw;
+    max-height: 92dvh;
+    margin: auto 0 0;
+    border-radius: 12px 12px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .overlay[open] {
+    animation: overlay-slide-up .22s var(--ease-out);
+  }
+
+  @keyframes overlay-slide-up {
+    from {
+      transform: translateY(30%);
+      opacity: .5;
+    }
+
+    to {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  .overlay-handle {
+    display: block;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    width: 36px;
+    height: 4px;
+    margin-left: -18px;
+    border-radius: 2px;
+    background: var(--color-border-strong);
+  }
+
+  .overlay-head {
+    touch-action: none;
+    padding: 16px 10px 8px 16px;
+  }
+
+  .overlay-body {
+    padding: 8px 16px 28px;
+  }
+
+  .overlay-foot {
+    padding: 10px 16px 16px;
+  }
+
+  .snackbar {
+    bottom: calc(76px + env(safe-area-inset-bottom));
+  }
+
+  .interest {
+    grid-template-columns: minmax(0, 1fr) auto 34px 34px;
+    padding-left: 14px;
+  }
+
+  .interest .interest-count {
+    display: none;
+  }
+
+  .interest.is-readonly {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .grid-scroller {
+    max-height: calc(100dvh - 260px);
+  }
+}

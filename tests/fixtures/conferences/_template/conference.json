@@ -1,0 +1,29 @@
+{
+  "id": "template-2027",
+  "name": "Template 2027",
+  "shortName": "Template",
+  "storageNamespace": "whichtalk:template-2027:",
+  "output": "docs/template/2027",
+  "page": {
+    "title": "WhichTalk · Template 2027",
+    "description": "A planner for the Template 2027 program.",
+    "ogDescription": "A planner for Template 2027.",
+    "canonical": "https://whichtalk.com/template/2027/",
+    "officialSchedule": "https://template.example/program",
+    "organizer": "the Template organizers",
+    "sourceName": "template.example"
+  },
+  "home": { "listed": false, "summary": "City · Month 2027", "badge": "’27" },
+  "defaultLocation": "MAIN",
+  "locations": [
+    { "key": "MAIN", "name": "City", "utcOffsetHours": 0, "zone": "UTC", "venue": "Venue" }
+  ],
+  "tracks": [
+    { "key": "talk", "label": "Talks", "singular": "Talk", "kinds": ["Talk"] },
+    { "key": "other", "label": "Other", "singular": "Event", "kinds": [] }
+  ],
+  "hiddenTracks": [],
+  "fallbackTrack": "other",
+  "kindLabels": {},
+  "source": { "type": "events-file", "path": "events.json" }
+}

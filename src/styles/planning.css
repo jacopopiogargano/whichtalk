@@ -1,0 +1,186 @@
+/* Personal events, change tags, the day planner, walking notes, reading list and team. */
+
+/* ---- personal events and change tags ---- */
+.star-spacer {
+  width: 40px;
+  flex: none;
+}
+
+.changed-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 6px;
+  border-radius: var(--radius-chip);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  vertical-align: 1px;
+  background: var(--color-alert-soft);
+  color: var(--color-alert-text);
+}
+
+.changes-link {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}
+
+.changes-link:hover {
+  color: var(--color-text);
+  text-decoration-color: currentColor;
+}
+
+/* ---- walking notes ---- */
+.walk-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin: 10px 0 0;
+}
+
+.walk-note.is-warn {
+  color: var(--color-alert-text);
+}
+
+.walk-item {
+  padding: 0 16px 0 94px;
+  position: relative;
+}
+
+.walk-item .walk-note {
+  margin: 0;
+  padding: 6px 0;
+}
+
+.walk-item + .item::before {
+  display: none;
+}
+
+/* ---- planner: add in a gap, notes, reading list, time range, name ---- */
+.add-in-gap {
+  margin-left: 12px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  vertical-align: 1px;
+}
+
+.add-in-gap .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.item.is-personal .item-meta {
+  font-style: normal;
+}
+
+.personal-notes {
+  white-space: pre-wrap;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+}
+
+.reading-row {
+  margin-top: 16px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+
+.time-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.time-range input,
+.name-field input {
+  height: 32px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.name-field {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  margin-top: 12px;
+}
+
+.name-field input {
+  width: 180px;
+}
+
+/* ---- planner draft: added and removed items ---- */
+.item.is-plan-add .item-time small {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.item.is-plan-remove .item-time small {
+  color: var(--color-alert-text);
+  font-weight: 600;
+}
+
+.item.is-plan-remove .item-title {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--color-border-strong);
+}
+
+/* ---- team ---- */
+.teammate-add {
+  margin-top: 12px;
+}
+
+.teammate-add .autocomplete-row input {
+  flex: 1;
+}
+
+.item select.site-select {
+  align-self: center;
+  flex: none;
+}
+
+.block.is-personal {
+  background: var(--color-panel);
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+}
+
+/* Phones. */
+@media (max-width: 640px) {
+  .section-head {
+    flex-wrap: wrap;
+  }
+
+  .section-head h2 {
+    flex-basis: 100%;
+  }
+
+  .controls .fill {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .walk-item {
+    padding-left: 82px;
+  }
+
+  .teammate-add .autocomplete-row {
+    flex-wrap: wrap;
+  }
+
+  .name-field input {
+    width: 130px;
+  }
+}

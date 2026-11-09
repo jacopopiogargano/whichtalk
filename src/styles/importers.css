@@ -1,0 +1,146 @@
+/* Account panel, part two: quick adds, importers, status lines, candidates, import review. */
+
+/* ---- quick adds ---- */
+.quick-adds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: baseline;
+  margin: 14px 0 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.quick-adds button {
+  color: var(--color-text);
+  font-size: 14px;
+  padding: 4px 0;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}
+
+.quick-adds button:hover {
+  text-decoration-color: currentColor;
+}
+
+/* ---- importers ---- */
+.importers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.importer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 16px;
+}
+
+.importer h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.importer p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.importer > .button,
+.importer > .toggle-group {
+  align-self: flex-start;
+}
+
+/* ---- privacy note and status line ---- */
+.privacy-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.privacy-note .icon {
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+}
+
+.status-line {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  min-height: 20px;
+}
+
+.status-line.is-error {
+  color: var(--color-alert-text);
+}
+
+.status-line.is-ok {
+  color: var(--color-text-secondary);
+}
+
+/* ---- candidates ---- */
+.candidates {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  background: var(--color-panel);
+}
+
+.candidate {
+  display: block;
+  text-align: left;
+  padding: 10px 14px;
+}
+
+.candidate + .candidate {
+  border-top: 1px solid var(--color-divider);
+}
+
+.candidate:hover,
+.candidate[aria-pressed=true] {
+  background: var(--color-fill);
+}
+
+.candidate b {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.candidate small {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- review box ---- */
+.review-box {
+  margin-top: 8px;
+  padding: 16px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+}
+
+.review-box h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--color-text);
+}
+
+.review-box .interest-list {
+  background: var(--color-panel);
+}

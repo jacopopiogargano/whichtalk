@@ -1,0 +1,16 @@
+/* Reduced motion: no entrance animations or transitions. */
+
+@media (prefers-reduced-motion: reduce) {
+  .page.is-entering,
+  .overlay[open],
+  .overlay::backdrop {
+    animation: none !important;
+  }
+
+  .overlay,
+  .snackbar,
+  .toggle,
+  .toggle::after {
+    transition: none !important;
+  }
+}

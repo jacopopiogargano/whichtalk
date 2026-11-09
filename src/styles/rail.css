@@ -1,0 +1,262 @@
+/*
+  The rail: wordmark, event scope, section tabs, search and the account button.
+  Phones and tablets get a 52px sticky bar; rail-wide.css turns it into a sidebar from 1024px.
+  One markup serves every layout, so the children are placed with flex `order`.
+*/
+
+/* ---- bar ---- */
+.rail {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-ground);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.rail-inner {
+  height: 52px;
+  padding: 0 16px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wordmark {
+  order: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  padding: 4px 0;
+}
+
+.wordmark-logo {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  display: block;
+}
+
+.event-scope {
+  display: none;
+}
+
+.rail-actions {
+  order: 5;
+  margin-left: 6px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.rail.is-searching .rail-actions {
+  margin-left: auto;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-control);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  flex: none;
+}
+
+.icon-button:hover {
+  background: var(--color-fill);
+  color: var(--color-text);
+}
+
+#search-open {
+  order: 4;
+  margin-left: auto;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-control);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+  flex: none;
+}
+
+#search-open:hover {
+  background: var(--color-fill);
+  color: var(--color-text);
+}
+
+#search-open .label,
+#search-open kbd {
+  display: none;
+}
+
+.rail.is-searching #search-open {
+  display: none;
+}
+
+.account {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--color-text);
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--color-border-strong);
+  background: var(--color-panel);
+  flex: none;
+}
+
+.account .label,
+.account small {
+  display: none;
+}
+
+.account:hover,
+.account[aria-pressed=true] {
+  background: var(--color-fill);
+}
+
+.account.has-alert::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--color-alert);
+  border: 2px solid var(--color-ground);
+}
+
+/* ---- search field (shown while searching) ---- */
+.search-field {
+  flex: 1;
+  min-width: 0;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  order: 3;
+}
+
+.search-field > .icon {
+  position: absolute;
+  left: 11px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.search-field input {
+  flex: 1;
+  min-width: 0;
+  height: 36px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  padding: 0 34px 0 34px;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-field input:focus {
+  border-color: var(--color-text);
+}
+
+input[type=search]::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search-field .search-clear {
+  position: absolute;
+  right: 70px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--color-text-muted);
+}
+
+.search-field .search-clear .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.search-field .text-button {
+  text-decoration: none;
+}
+
+.rail.is-searching .nav-tabs {
+  display: none;
+}
+
+/* ---- section tabs: underlined on tablets, a list in the sidebar, the bottom nav on phones ---- */
+.nav-tabs {
+  display: flex;
+  align-self: stretch;
+  gap: 20px;
+  margin-left: 24px;
+  order: 2;
+}
+
+.nav-tabs button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.nav-tabs button:hover {
+  color: var(--color-text);
+}
+
+.nav-tabs button[aria-pressed=true] {
+  color: var(--color-text);
+}
+
+.nav-tabs button[aria-pressed=true]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+.nav-tabs .icon {
+  display: none;
+}
+
+.count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  background: var(--color-fill);
+  color: var(--color-text-secondary);
+}
+
+.count.is-warn {
+  background: var(--color-alert-soft);
+  color: var(--color-alert-text);
+}
+
+.bottom-nav {
+  display: none;
+}

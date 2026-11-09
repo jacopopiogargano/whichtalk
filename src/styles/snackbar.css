@@ -1,0 +1,40 @@
+/* Snackbar: transient messages with an optional action. */
+
+.snackbar {
+  position: fixed;
+  left: 50%;
+  bottom: 28px;
+  transform: translate(-50%, 6px);
+  opacity: 0;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  padding: 10px 12px 10px 16px;
+  border-radius: var(--radius-panel);
+  font-size: 14px;
+  z-index: 100;
+  pointer-events: none;
+  transition: opacity .15s, transform .15s var(--ease-out);
+  box-shadow: var(--shadow-float);
+  max-width: calc(100vw - 32px);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.snackbar.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.snackbar.is-visible.has-action {
+  pointer-events: auto;
+}
+
+.snackbar button {
+  color: inherit;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--radius-control);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

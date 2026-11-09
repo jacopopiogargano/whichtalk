@@ -1,0 +1,65 @@
+{
+  "id": "alpha-2026",
+  "name": "Alpha 2026",
+  "shortName": "Alpha",
+  "output": "docs/alpha/2026",
+  "page": {
+    "title": "WhichTalk · Alpha 2026",
+    "description": "Test conference with every optional field.",
+    "ogDescription": "Test conference.",
+    "canonical": "https://whichtalk.com/alpha/2026/",
+    "officialSchedule": "https://alpha.example/2026/program",
+    "organizer": "the Alpha organizers",
+    "sourceName": "alpha.example"
+  },
+  "home": { "listed": true, "summary": "Lisbon and New York · October 2026", "badge": "’26" },
+  "urls": {
+    "event": "https://alpha.example/2026/event/{id}",
+    "poster": "https://alpha.example/2026/posters/{id}.png",
+    "openreview": "https://openreview.net/forum?id={openreviewId}"
+  },
+  "defaultLocation": "LIS",
+  "locations": [
+    { "key": "LIS", "name": "Lisbon", "utcOffsetHours": 1, "zone": "WEST", "venue": "Congress Centre" },
+    { "key": "NYC", "name": "New York", "utcOffsetHours": -5, "zone": "EST", "venue": "Exhibition Hall" },
+    { "key": "ALL", "name": "All sites", "utcOffsetHours": 1, "zone": "WEST", "venue": "", "all": true }
+  ],
+  "tracks": [
+    { "key": "keynote", "label": "Keynotes", "singular": "Keynote", "kinds": ["Keynote"] },
+    { "key": "talk", "label": "Talks", "singular": "Talk", "kinds": ["Talk", "Talk Session"], "papers": true },
+    { "key": "poster", "label": "Posters", "singular": "Poster", "kinds": ["Poster"], "papers": true },
+    { "key": "other", "label": "Other", "singular": "Event", "kinds": [] },
+    { "key": "break", "label": "Breaks", "singular": "Break", "kinds": ["Break"] }
+  ],
+  "hiddenTracks": ["break"],
+  "fallbackTrack": "other",
+  "kindLabels": { "Talk Session": "Talk session" },
+  "dayLabels": [
+    { "label": "Main", "title": "Main conference", "tracks": ["keynote", "talk", "poster"] },
+    { "label": "Social", "tracks": ["other"] }
+  ],
+  "containerKinds": ["Talk Session"],
+  "genericSessionTitles": "Talk Session|Poster Session",
+  "notes": { "untimed": "Times come later." },
+  "venue": {
+    "name": "Congress Centre",
+    "location": "LIS",
+    "about": "Made up for the tests.",
+    "zones": [
+      { "pattern": "^room ([12])\\.\\d$", "building": "north", "level": "$1", "zone": "North building, level $1" },
+      { "pattern": "^auditorium$", "building": "north", "level": null, "zone": "Auditorium" },
+      { "pattern": "^south hall$", "building": "south", "level": 0, "zone": "South Hall" }
+    ],
+    "walkMinutes": { "north|south": 5 },
+    "sameZoneMinutes": 1,
+    "sameBuildingBaseMinutes": 2,
+    "minutesPerLevel": 1,
+    "unknownLevelChange": 1,
+    "upstairsMinutes": 1
+  },
+  "theme": {
+    "light": { "accent": "#047857", "accentMark": "#059669", "accentSoft": "#e1f3ec" },
+    "dark": { "accent": "#34d399", "accentMark": "#34d399", "accentSoft": "#0c2a21" }
+  },
+  "source": { "type": "events-file", "path": "events.json" }
+}

@@ -1,0 +1,123 @@
+/*
+  Design tokens and the Geist font.
+
+  The look in brief: a blue-grey ground with white panels (1px border, 8px corners, no shadow at
+  rest) and ink-coloured chrome. Sky blue is reserved for the user's own data (starred sessions,
+  their blocks in the grids, the day timeline); pink only marks "now" and clashes; primary actions
+  are near-black. Type is Geist: 28px page titles, 16px section and card titles, 15px item titles,
+  14px body, 13px meta, never below 12px, tabular figures for every time and count. Only overlays,
+  menus and the snackbar float. Transitions take 150-200ms and stop under reduced motion.
+
+  data-theme on <html> is light, dark or system; the inline script in index.html sets it before
+  the first paint. The dark palette appears twice because a rule inside a media query cannot be
+  shared with the explicit [data-theme=dark] selector.
+*/
+
+/* Geist, variable weight 400-700, in latin-ext and latin subsets. */
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(geist-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(geist-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Light palette (default) and shared metrics. */
+:root {
+  --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --content-width: 1040px;
+  --rail-width: 248px;
+  --radius-panel: 8px;
+  --radius-control: 6px;
+  --radius-chip: 4px;
+  --ease-out: cubic-bezier(.2, .8, .2, 1);
+  --color-ground: #f2f4f7;
+  --color-panel: #ffffff;
+  --color-panel-alt: #f8f9fb;
+  --color-border: #e1e5eb;
+  --color-divider: #eceff3;
+  --color-fill: #e8ebf0;
+  --color-border-strong: #cdd3dc;
+  --color-text: #0b1220;
+  --color-text-secondary: #344054;
+  --color-text-muted: #556072;
+  --color-control: #8a94a6;
+  --color-primary: #0b1220;
+  --color-on-primary: #ffffff;
+  --color-accent: #0369a1;
+  --color-accent-mark: #0284c7;
+  --color-accent-soft: #e3f0f9;
+  --color-alert: #db2777;
+  --color-alert-text: #be185d;
+  --color-alert-soft: #fce7f3;
+  --color-highlight: #fef3c7;
+  --color-scrim: rgb(11 18 32 / .4);
+  --shadow-float: 0 20px 48px rgb(11 18 32 / .16), 0 2px 6px rgb(11 18 32 / .06);
+  color-scheme: light;
+}
+
+/* Dark palette, chosen explicitly. */
+:root[data-theme=dark] {
+  --color-ground: #0a0a0a;
+  --color-panel: #141414;
+  --color-panel-alt: #1a1a1a;
+  --color-border: #262626;
+  --color-divider: #1f1f1f;
+  --color-fill: #222222;
+  --color-border-strong: #3a3a3a;
+  --color-text: #f5f5f5;
+  --color-text-secondary: #d4d4d4;
+  --color-text-muted: #a6a6a6;
+  --color-control: #7a7a7a;
+  --color-primary: #f5f5f5;
+  --color-on-primary: #0a0a0a;
+  --color-accent: #38bdf8;
+  --color-accent-mark: #38bdf8;
+  --color-accent-soft: #0d2533;
+  --color-alert: #f472b6;
+  --color-alert-text: #f472b6;
+  --color-alert-soft: #3a1229;
+  --color-highlight: #4a3b0b;
+  --color-scrim: rgb(0 0 0 / .6);
+  --shadow-float: 0 20px 48px rgb(0 0 0 / .6), 0 2px 6px rgb(0 0 0 / .4);
+  color-scheme: dark;
+}
+
+/* Dark palette when the theme follows the system. */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme=system] {
+    --color-ground: #0a0a0a;
+    --color-panel: #141414;
+    --color-panel-alt: #1a1a1a;
+    --color-border: #262626;
+    --color-divider: #1f1f1f;
+    --color-fill: #222222;
+    --color-border-strong: #3a3a3a;
+    --color-text: #f5f5f5;
+    --color-text-secondary: #d4d4d4;
+    --color-text-muted: #a6a6a6;
+    --color-control: #7a7a7a;
+    --color-primary: #f5f5f5;
+    --color-on-primary: #0a0a0a;
+    --color-accent: #38bdf8;
+    --color-accent-mark: #38bdf8;
+    --color-accent-soft: #0d2533;
+    --color-alert: #f472b6;
+    --color-alert-text: #f472b6;
+    --color-alert-soft: #3a1229;
+    --color-highlight: #4a3b0b;
+    --color-scrim: rgb(0 0 0 / .6);
+    --shadow-float: 0 20px 48px rgb(0 0 0 / .6), 0 2px 6px rgb(0 0 0 / .4);
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,1870 @@
+{
+  "format": "whichtalk-events",
+  "version": 1,
+  "events": [
+    {
+      "id": 1001,
+      "kind": "Tutorial",
+      "title": "Tutorial: Graph neural networks from first principles",
+      "start": "2026-10-12T09:00",
+      "durationMinutes": 90,
+      "room": "N1.1",
+      "authors": [
+        "Giulia Greco",
+        "Greta Okafor",
+        "Noor Abbott"
+      ],
+      "abstract": "A hands-on introduction to graph neural networks: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Graph Neural Networks"
+    },
+    {
+      "id": 1002,
+      "kind": "Tutorial",
+      "title": "Tutorial: Tabular learning from first principles",
+      "start": "2026-10-12T09:00",
+      "durationMinutes": 90,
+      "room": "N1.2",
+      "authors": [
+        "Felix Carvalho"
+      ],
+      "abstract": "A hands-on introduction to tabular learning: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Tabular Learning"
+    },
+    {
+      "id": 1003,
+      "kind": "Tutorial",
+      "title": "Tutorial: Sparse attention from first principles",
+      "start": "2026-10-12T11:00",
+      "durationMinutes": 90,
+      "room": "N1.1",
+      "authors": [
+        "Farid Haddad",
+        "Greta Carvalho"
+      ],
+      "abstract": "A hands-on introduction to sparse attention: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Sparse Attention"
+    },
+    {
+      "id": 1004,
+      "kind": "Tutorial",
+      "title": "Tutorial: Vision transformers from first principles",
+      "start": "2026-10-12T11:00",
+      "durationMinutes": 90,
+      "room": "N1.2",
+      "authors": [
+        "Umberto Nakamura",
+        "Quentin Weber"
+      ],
+      "abstract": "A hands-on introduction to vision transformers: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Vision Transformers"
+    },
+    {
+      "id": 1005,
+      "kind": "Tutorial",
+      "title": "Tutorial: Privacy-preserving training from first principles",
+      "start": "2026-10-12T14:00",
+      "durationMinutes": 90,
+      "room": "N1.1",
+      "authors": [
+        "Giulia Engel",
+        "Vera Ferraz",
+        "Ivo Santos"
+      ],
+      "abstract": "A hands-on introduction to privacy-preserving training: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Privacy-Preserving Training"
+    },
+    {
+      "id": 1006,
+      "kind": "Tutorial",
+      "title": "Tutorial: Multilingual translation from first principles",
+      "start": "2026-10-12T14:00",
+      "durationMinutes": 90,
+      "room": "N1.2",
+      "authors": [
+        "Pietro Tanaka"
+      ],
+      "abstract": "A hands-on introduction to multilingual translation: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Multilingual Translation"
+    },
+    {
+      "id": 1007,
+      "kind": "Tutorial",
+      "title": "Tutorial: Protein structure prediction from first principles",
+      "start": "2026-10-12T16:00",
+      "durationMinutes": 90,
+      "room": "N1.1",
+      "authors": [
+        "Diego Bianchi"
+      ],
+      "abstract": "A hands-on introduction to protein structure prediction: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Protein Structure Prediction"
+    },
+    {
+      "id": 1008,
+      "kind": "Tutorial",
+      "title": "Tutorial: Privacy-preserving training from first principles",
+      "start": "2026-10-12T16:00",
+      "durationMinutes": 90,
+      "room": "N1.2",
+      "authors": [
+        "Jade Fonseca"
+      ],
+      "abstract": "A hands-on introduction to privacy-preserving training: the core ideas, the common failure modes and the tools to try at home. No prior background needed. (Demo data.)",
+      "topic": "Privacy-Preserving Training"
+    },
+    {
+      "id": 1009,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-12T10:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1010,
+      "kind": "Break",
+      "title": "Lunch",
+      "start": "2026-10-12T12:30",
+      "durationMinutes": 75,
+      "room": "Garden Terrace"
+    },
+    {
+      "id": 1011,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-12T15:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1012,
+      "kind": "Reception",
+      "title": "Welcome reception",
+      "start": "2026-10-12T18:30",
+      "durationMinutes": 120,
+      "room": "Garden Terrace",
+      "abstract": "Drinks and snacks on the terrace by the river. Badge required."
+    },
+    {
+      "id": 1013,
+      "kind": "Keynote",
+      "title": "What we still do not know about learning",
+      "start": "2026-10-13T09:00",
+      "durationMinutes": 60,
+      "room": "Auditorium",
+      "authors": [
+        "Bilal Greco"
+      ],
+      "abstract": "Bilal Greco looks back at a decade of results and picks the open questions worth a career. (Demo data.)",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1014,
+      "kind": "Talk Session",
+      "title": "Talk Session 1A: Privacy-Preserving Training",
+      "start": "2026-10-13T11:00",
+      "durationMinutes": 90,
+      "room": "Auditorium"
+    },
+    {
+      "id": 1015,
+      "kind": "Talk",
+      "title": "Benchmarking uncertainty estimation with noisy labels",
+      "start": "2026-10-13T11:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1014,
+      "authors": [
+        "Giulia Horvat",
+        "Karim Okafor",
+        "Dario Horvat"
+      ],
+      "abstract": "We study uncertainty estimation with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Uncertainty Estimation",
+      "institutions": [
+        "Atlas College",
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1016,
+      "kind": "Talk",
+      "title": "A simple baseline for vision transformers for edge devices",
+      "start": "2026-10-13T11:25",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1014,
+      "authors": [
+        "Sven Esposito",
+        "Jade Zanetti",
+        "Jade Greco",
+        "Zora Bianchi"
+      ],
+      "abstract": "We study vision transformers for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Vision Transformers",
+      "institutions": [
+        "Harbor AI Research",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1017,
+      "kind": "Talk",
+      "title": "Sharper evaluations of retrieval-augmented generation",
+      "start": "2026-10-13T11:45",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1014,
+      "authors": [
+        "Xenia Moreau",
+        "Talia Fonseca",
+        "Giulia Fonseca",
+        "Jade Costa"
+      ],
+      "abstract": "We study retrieval-augmented generation under distribution shift. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Retrieval-Augmented Generation",
+      "institutions": [
+        "Atlas College",
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1018,
+      "kind": "Talk",
+      "title": "Graph neural networks as a ranking problem",
+      "start": "2026-10-13T12:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1014,
+      "authors": [
+        "Lina Bianchi",
+        "Elena Rossi",
+        "Xenia Gallo"
+      ],
+      "abstract": "We study graph neural networks without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Graph Neural Networks",
+      "institutions": [
+        "Northbridge University",
+        "Delta Systems Lab"
+      ]
+    },
+    {
+      "id": 1019,
+      "kind": "Talk Session",
+      "title": "Talk Session 1B: Sparse Attention",
+      "start": "2026-10-13T11:00",
+      "durationMinutes": 90,
+      "room": "N2.1"
+    },
+    {
+      "id": 1020,
+      "kind": "Talk",
+      "title": "What diffusion models forgets",
+      "start": "2026-10-13T11:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1019,
+      "authors": [
+        "Noor Moreau",
+        "Hugo Costa",
+        "Rania Weber"
+      ],
+      "abstract": "We study diffusion models on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Diffusion Models",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1021,
+      "kind": "Talk",
+      "title": "What climate downscaling forgets",
+      "start": "2026-10-13T11:25",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1019,
+      "authors": [
+        "Ivo Okafor",
+        "Lucia Ito",
+        "Farid Abbott"
+      ],
+      "abstract": "We study climate downscaling for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Climate Downscaling",
+      "institutions": [
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1022,
+      "kind": "Talk",
+      "title": "Benchmarking uncertainty estimation at scale",
+      "start": "2026-10-13T11:45",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1019,
+      "authors": [
+        "Yusuf Almeida",
+        "Yusuf Engel"
+      ],
+      "abstract": "We study uncertainty estimation at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Uncertainty Estimation",
+      "institutions": [
+        "Coastal University",
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1023,
+      "kind": "Talk",
+      "title": "Sparse attention as a ranking problem",
+      "start": "2026-10-13T12:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1019,
+      "authors": [
+        "Sven Tanaka",
+        "Umberto Haddad",
+        "Diego Kowalski"
+      ],
+      "abstract": "We study sparse attention on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Sparse Attention",
+      "institutions": [
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1024,
+      "kind": "Talk Session",
+      "title": "Talk Session 2A: Active Learning",
+      "start": "2026-10-13T14:00",
+      "durationMinutes": 90,
+      "room": "Auditorium"
+    },
+    {
+      "id": 1025,
+      "kind": "Talk",
+      "title": "Sharper evaluations of robot manipulation",
+      "start": "2026-10-13T14:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1024,
+      "authors": [
+        "Jade Zanetti",
+        "Marco Lindqvist"
+      ],
+      "abstract": "We study robot manipulation without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Robot Manipulation",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1026,
+      "kind": "Talk",
+      "title": "Rethinking model compression without labels",
+      "start": "2026-10-13T14:25",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1024,
+      "authors": [
+        "Hana Ito",
+        "Rania Lindqvist",
+        "Rosa Bianchi",
+        "Farid Yilmaz"
+      ],
+      "abstract": "We study model compression without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1027,
+      "kind": "Talk",
+      "title": "What federated learning forgets",
+      "start": "2026-10-13T14:45",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1024,
+      "authors": [
+        "Samir Dubois",
+        "Umberto Horvat",
+        "Carmen Haddad",
+        "Greta Nakamura"
+      ],
+      "abstract": "We study federated learning with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1028,
+      "kind": "Talk",
+      "title": "Benchmarking multilingual translation in low-resource languages",
+      "start": "2026-10-13T15:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1024,
+      "authors": [
+        "Bruno Weber",
+        "Wen Iversen",
+        "Hugo Rossi"
+      ],
+      "abstract": "We study multilingual translation in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Multilingual Translation",
+      "institutions": [
+        "Harbor AI Research",
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1029,
+      "kind": "Talk Session",
+      "title": "Talk Session 2B: Tabular Learning",
+      "start": "2026-10-13T14:00",
+      "durationMinutes": 90,
+      "room": "N2.1"
+    },
+    {
+      "id": 1030,
+      "kind": "Talk",
+      "title": "Scaling laws for reinforcement learning from feedback",
+      "start": "2026-10-13T14:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1029,
+      "authors": [
+        "Kaito Gallo",
+        "Wen Lindqvist"
+      ],
+      "abstract": "We study reinforcement learning from feedback at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Reinforcement Learning From Feedback",
+      "institutions": [
+        "Harbor AI Research",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1031,
+      "kind": "Talk",
+      "title": "Faster diffusion models with fewer parameters",
+      "start": "2026-10-13T14:25",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1029,
+      "authors": [
+        "Quentin Engel",
+        "Alba Quaresma",
+        "Ada Duarte"
+      ],
+      "abstract": "We study diffusion models with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Diffusion Models",
+      "institutions": [
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1032,
+      "kind": "Talk",
+      "title": "A simple baseline for speech recognition at low data budgets",
+      "start": "2026-10-13T14:45",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1029,
+      "authors": [
+        "Umberto Dubois",
+        "Zora Ueda",
+        "Mateo Dubois",
+        "Sven Haddad"
+      ],
+      "abstract": "We study speech recognition at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Speech Recognition",
+      "institutions": [
+        "Meridian Labs",
+        "Northbridge University"
+      ]
+    },
+    {
+      "id": 1033,
+      "kind": "Talk",
+      "title": "Benchmarking protein structure prediction on a single GPU",
+      "start": "2026-10-13T15:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1029,
+      "authors": [
+        "Talia Valente",
+        "Viktor Haddad",
+        "Alba Ueda"
+      ],
+      "abstract": "We study protein structure prediction on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Protein Structure Prediction",
+      "institutions": [
+        "Delta Systems Lab",
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1034,
+      "kind": "Poster Session",
+      "title": "Poster Session 1",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall"
+    },
+    {
+      "id": 1035,
+      "kind": "Poster",
+      "title": "When does retrieval-augmented generation work at low data budgets?",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Hugo Costa",
+        "Hana Weber",
+        "Pietro Tanaka"
+      ],
+      "abstract": "We study retrieval-augmented generation at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Retrieval-Augmented Generation",
+      "institutions": [
+        "Northbridge University",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1036,
+      "kind": "Poster",
+      "title": "Benchmarking program synthesis at scale",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Rania Okafor",
+        "Lina Iversen"
+      ],
+      "abstract": "We study program synthesis at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Program Synthesis",
+      "institutions": [
+        "Meridian Labs",
+        "Northbridge University",
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1037,
+      "kind": "Poster",
+      "title": "Rethinking causal inference on a single GPU",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Esme Abbott",
+        "Umberto Ito",
+        "Farid Lindqvist",
+        "Chiara Greco"
+      ],
+      "abstract": "We study causal inference on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Coastal University",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1038,
+      "kind": "Poster",
+      "title": "What sparse attention forgets",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Sven Greco",
+        "Wanda Zanetti",
+        "Omar Rossi",
+        "Marco Xavier"
+      ],
+      "abstract": "We study sparse attention for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Sparse Attention",
+      "institutions": [
+        "Atlas College",
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1039,
+      "kind": "Poster",
+      "title": "Scaling laws for vision transformers",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Olga Abbott",
+        "Felix Almeida",
+        "Hana Abbott"
+      ],
+      "abstract": "We study vision transformers for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Vision Transformers",
+      "institutions": [
+        "Northbridge University",
+        "University of Lisbon",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1040,
+      "kind": "Poster",
+      "title": "Scaling laws for protein structure prediction",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Bruno Iversen",
+        "Talia Tanaka",
+        "Chiara Zanetti",
+        "Ivo Horvat"
+      ],
+      "abstract": "We study protein structure prediction in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Protein Structure Prediction",
+      "institutions": [
+        "Example Institute of Technology",
+        "University of Lisbon",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1041,
+      "kind": "Poster",
+      "title": "Privacy-preserving training as a ranking problem",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Chiara Moreau",
+        "Samir Santos",
+        "Samir Weber"
+      ],
+      "abstract": "We study privacy-preserving training in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Privacy-Preserving Training",
+      "institutions": [
+        "Delta Systems Lab",
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1042,
+      "kind": "Poster",
+      "title": "What sparse attention forgets",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Ivo Kowalski",
+        "Bruno Lindqvist",
+        "Ivo Jensen"
+      ],
+      "abstract": "We study sparse attention for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Sparse Attention",
+      "institutions": [
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1043,
+      "kind": "Poster",
+      "title": "Faster uncertainty estimation with fewer parameters",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Tessa Nakamura",
+        "Jonas Pereira",
+        "Greta Ueda",
+        "Greta Engel",
+        "Quentin Tanaka"
+      ],
+      "abstract": "We study uncertainty estimation on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Uncertainty Estimation",
+      "institutions": [
+        "Atlas College",
+        "Delta Systems Lab"
+      ]
+    },
+    {
+      "id": 1044,
+      "kind": "Poster",
+      "title": "Graph neural networks as a ranking problem",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Sven Dubois",
+        "Wen Ferraz"
+      ],
+      "abstract": "We study graph neural networks in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Graph Neural Networks",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1045,
+      "kind": "Poster",
+      "title": "Speech recognition with noisy labels: lessons from 40 experiments",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Bilal Greco",
+        "Vera Ueda",
+        "Zora Ueda"
+      ],
+      "abstract": "We study speech recognition with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Speech Recognition",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1046,
+      "kind": "Poster",
+      "title": "Faster causal inference with fewer parameters",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Yusuf Nakamura",
+        "Carmen Ito",
+        "Rosa Valente"
+      ],
+      "abstract": "We study causal inference in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Harbor AI Research",
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1047,
+      "kind": "Poster",
+      "title": "When does multilingual translation work with noisy labels?",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Omar Valente",
+        "Jade Haddad",
+        "Samir Dubois",
+        "Zora Berger",
+        "Uma Valente"
+      ],
+      "abstract": "We study multilingual translation with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Multilingual Translation",
+      "institutions": [
+        "Example Institute of Technology",
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1048,
+      "kind": "Poster",
+      "title": "Vision transformers as a ranking problem",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Wen Valente",
+        "Zora Lindqvist"
+      ],
+      "abstract": "We study vision transformers in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Vision Transformers",
+      "institutions": [
+        "Harbor AI Research",
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1049,
+      "kind": "Poster",
+      "title": "Sharper evaluations of robot manipulation",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Esme Valente",
+        "Chiara Okafor"
+      ],
+      "abstract": "We study robot manipulation for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Robot Manipulation",
+      "institutions": [
+        "Harbor AI Research",
+        "Northbridge University",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1050,
+      "kind": "Poster",
+      "title": "Model compression as a ranking problem",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Olga Xavier",
+        "Jade Moreau",
+        "Ada Gallo"
+      ],
+      "abstract": "We study model compression without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Delta Systems Lab",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1051,
+      "kind": "Poster",
+      "title": "When does model compression work for long contexts?",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Farid Abbott",
+        "Sven Ito"
+      ],
+      "abstract": "We study model compression for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1052,
+      "kind": "Poster",
+      "title": "When does program synthesis work on a single GPU?",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1034,
+      "authors": [
+        "Omar Esposito",
+        "Vera Weber",
+        "Mateo Esposito",
+        "Felix Ueda"
+      ],
+      "abstract": "We study program synthesis on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Program Synthesis",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1053,
+      "kind": "Demo",
+      "title": "Demo: reinforcement learning from feedback you can try on your phone",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Esme Xavier",
+        "Diego Moreau"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1054,
+      "kind": "Demo",
+      "title": "Demo: time-series forecasting you can try on your phone",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Viktor Zanetti",
+        "Nadia Duarte"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1055,
+      "kind": "Demo",
+      "title": "Demo: diffusion models you can try on your phone",
+      "start": "2026-10-13T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Viktor Greco",
+        "Ivo Tanaka"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1056,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-13T10:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1057,
+      "kind": "Break",
+      "title": "Lunch",
+      "start": "2026-10-13T12:30",
+      "durationMinutes": 75,
+      "room": "Garden Terrace"
+    },
+    {
+      "id": 1058,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-13T15:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1059,
+      "kind": "Keynote",
+      "title": "Models that know when to stop",
+      "start": "2026-10-14T09:00",
+      "durationMinutes": 60,
+      "room": "Auditorium",
+      "authors": [
+        "Noor Ferraz"
+      ],
+      "abstract": "Noor Ferraz looks back at a decade of results and picks the open questions worth a career. (Demo data.)",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1060,
+      "kind": "Talk Session",
+      "title": "Talk Session 3A: Vision Transformers",
+      "start": "2026-10-14T11:00",
+      "durationMinutes": 90,
+      "room": "Auditorium"
+    },
+    {
+      "id": 1061,
+      "kind": "Talk",
+      "title": "Faster robot manipulation with fewer parameters",
+      "start": "2026-10-14T11:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1060,
+      "authors": [
+        "Jade Lindqvist",
+        "Hana Horvat",
+        "Olga Gallo"
+      ],
+      "abstract": "We study robot manipulation in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Robot Manipulation",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1062,
+      "kind": "Talk",
+      "title": "Benchmarking causal inference for edge devices",
+      "start": "2026-10-14T11:25",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1060,
+      "authors": [
+        "Giulia Nakamura",
+        "Uma Fonseca",
+        "Jade Ueda",
+        "Pietro Zanetti"
+      ],
+      "abstract": "We study causal inference for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Northbridge University"
+      ]
+    },
+    {
+      "id": 1063,
+      "kind": "Talk",
+      "title": "Sharper evaluations of reinforcement learning from feedback",
+      "start": "2026-10-14T11:45",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1060,
+      "authors": [
+        "Rosa Tanaka",
+        "Ines Rossi",
+        "Ines Dubois"
+      ],
+      "abstract": "We study reinforcement learning from feedback under distribution shift. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Reinforcement Learning From Feedback",
+      "institutions": [
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1064,
+      "kind": "Talk",
+      "title": "Benchmarking federated learning under distribution shift",
+      "start": "2026-10-14T12:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1060,
+      "authors": [
+        "Ivo Berger",
+        "Omar Greco",
+        "Ivo Ferraz",
+        "Sven Abbott"
+      ],
+      "abstract": "We study federated learning under distribution shift. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Northbridge University",
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1065,
+      "kind": "Talk Session",
+      "title": "Talk Session 3B: Uncertainty Estimation",
+      "start": "2026-10-14T11:00",
+      "durationMinutes": 90,
+      "room": "N2.1"
+    },
+    {
+      "id": 1066,
+      "kind": "Talk",
+      "title": "Rethinking retrieval-augmented generation without labels",
+      "start": "2026-10-14T11:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1065,
+      "authors": [
+        "Wen Quaresma",
+        "Bruno Kowalski",
+        "Farid Bianchi",
+        "Marco Kowalski"
+      ],
+      "abstract": "We study retrieval-augmented generation without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Retrieval-Augmented Generation",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1067,
+      "kind": "Talk",
+      "title": "When does model compression work in low-resource languages?",
+      "start": "2026-10-14T11:25",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1065,
+      "authors": [
+        "Viktor Bianchi",
+        "Xenia Nakamura",
+        "Olga Carvalho",
+        "Farid Nakamura"
+      ],
+      "abstract": "We study model compression in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1068,
+      "kind": "Talk",
+      "title": "When does protein structure prediction work for long contexts?",
+      "start": "2026-10-14T11:45",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1065,
+      "authors": [
+        "Nadia Bianchi",
+        "Bilal Berger",
+        "Pietro Rossi",
+        "Wanda Xavier",
+        "Ada Esposito"
+      ],
+      "abstract": "We study protein structure prediction for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Protein Structure Prediction",
+      "institutions": [
+        "Coastal University",
+        "Delta Systems Lab"
+      ]
+    },
+    {
+      "id": 1069,
+      "kind": "Talk",
+      "title": "When does reinforcement learning from feedback work at low data budgets?",
+      "start": "2026-10-14T12:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1065,
+      "authors": [
+        "Wen Dubois",
+        "Mateo Duarte",
+        "Quentin Ferraz",
+        "Diego Weber"
+      ],
+      "abstract": "We study reinforcement learning from feedback at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Reinforcement Learning From Feedback",
+      "institutions": [
+        "Harbor AI Research",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1070,
+      "kind": "Talk Session",
+      "title": "Talk Session 4A: Diffusion Models",
+      "start": "2026-10-14T14:00",
+      "durationMinutes": 90,
+      "room": "Auditorium"
+    },
+    {
+      "id": 1071,
+      "kind": "Talk",
+      "title": "A simple baseline for climate downscaling on a single GPU",
+      "start": "2026-10-14T14:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1070,
+      "authors": [
+        "Karim Gallo",
+        "Pietro Dubois",
+        "Ivo Berger"
+      ],
+      "abstract": "We study climate downscaling on a single GPU. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Climate Downscaling",
+      "institutions": [
+        "Northbridge University",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1072,
+      "kind": "Talk",
+      "title": "A simple baseline for graph neural networks at scale",
+      "start": "2026-10-14T14:25",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1070,
+      "authors": [
+        "Bruno Costa",
+        "Mateo Horvat"
+      ],
+      "abstract": "We study graph neural networks at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Graph Neural Networks",
+      "institutions": [
+        "Northbridge University",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1073,
+      "kind": "Talk",
+      "title": "Faster vision transformers with fewer parameters",
+      "start": "2026-10-14T14:45",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1070,
+      "authors": [
+        "Talia Pereira",
+        "Paula Greco",
+        "Alba Costa",
+        "Paula Lindqvist",
+        "Marco Haddad"
+      ],
+      "abstract": "We study vision transformers for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Vision Transformers",
+      "institutions": [
+        "Atlas College",
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1074,
+      "kind": "Talk",
+      "title": "Sparse attention without labels: lessons from 40 experiments",
+      "start": "2026-10-14T15:05",
+      "durationMinutes": 20,
+      "room": "Auditorium",
+      "parent": 1070,
+      "authors": [
+        "Hana Dubois",
+        "Samir Pereira",
+        "Rosa Bianchi"
+      ],
+      "abstract": "We study sparse attention without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Sparse Attention",
+      "institutions": [
+        "Northbridge University",
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1075,
+      "kind": "Talk Session",
+      "title": "Talk Session 4B: Graph Neural Networks",
+      "start": "2026-10-14T14:00",
+      "durationMinutes": 90,
+      "room": "N2.1"
+    },
+    {
+      "id": 1076,
+      "kind": "Talk",
+      "title": "Climate downscaling in low-resource languages: lessons from 40 experiments",
+      "start": "2026-10-14T14:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1075,
+      "authors": [
+        "Jade Kowalski",
+        "Zora Haddad"
+      ],
+      "abstract": "We study climate downscaling in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Climate Downscaling",
+      "institutions": [
+        "Meridian Labs",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1077,
+      "kind": "Talk",
+      "title": "Rethinking causal inference for edge devices",
+      "start": "2026-10-14T14:25",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1075,
+      "authors": [
+        "Hana Rossi",
+        "Farid Quaresma",
+        "Chiara Nakamura"
+      ],
+      "abstract": "We study causal inference for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "University of Lisbon",
+        "Northbridge University"
+      ]
+    },
+    {
+      "id": 1078,
+      "kind": "Talk",
+      "title": "Rethinking multilingual translation in the wild",
+      "start": "2026-10-14T14:45",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1075,
+      "authors": [
+        "Dario Santos",
+        "Kaito Engel",
+        "Nadia Almeida",
+        "Noor Costa",
+        "Quentin Engel"
+      ],
+      "abstract": "We study multilingual translation in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Multilingual Translation",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1079,
+      "kind": "Talk",
+      "title": "Faster retrieval-augmented generation with fewer parameters",
+      "start": "2026-10-14T15:05",
+      "durationMinutes": 20,
+      "room": "N2.1",
+      "parent": 1075,
+      "authors": [
+        "Diego Ferraz",
+        "Chiara Almeida",
+        "Yusuf Ferraz",
+        "Sven Lindqvist"
+      ],
+      "abstract": "We study retrieval-augmented generation in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that is more stable than the usual recipe, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Retrieval-Augmented Generation",
+      "institutions": [
+        "Northbridge University"
+      ]
+    },
+    {
+      "id": 1080,
+      "kind": "Poster Session",
+      "title": "Poster Session 2",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall"
+    },
+    {
+      "id": 1081,
+      "kind": "Poster",
+      "title": "Tabular learning as a ranking problem",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Rosa Kowalski",
+        "Farid Berger",
+        "Elena Ito",
+        "Hana Pereira",
+        "Talia Jensen"
+      ],
+      "abstract": "We study tabular learning for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Tabular Learning",
+      "institutions": [
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1082,
+      "kind": "Poster",
+      "title": "When does tabular learning work at low data budgets?",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Farid Fonseca",
+        "Rania Valente",
+        "Wen Ferraz",
+        "Bruno Quaresma"
+      ],
+      "abstract": "We study tabular learning at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Tabular Learning",
+      "institutions": [
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1083,
+      "kind": "Poster",
+      "title": "Sharper evaluations of causal inference",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Sven Lindqvist",
+        "Wanda Iversen"
+      ],
+      "abstract": "We study causal inference with noisy labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1084,
+      "kind": "Poster",
+      "title": "Sharper evaluations of federated learning",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Rania Esposito",
+        "Mateo Greco",
+        "Hugo Engel"
+      ],
+      "abstract": "We study federated learning without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Harbor AI Research"
+      ]
+    },
+    {
+      "id": 1085,
+      "kind": "Poster",
+      "title": "Scaling laws for reinforcement learning from feedback",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Mateo Santos",
+        "Yusuf Almeida",
+        "Lucia Haddad"
+      ],
+      "abstract": "We study reinforcement learning from feedback at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Reinforcement Learning From Feedback",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1086,
+      "kind": "Poster",
+      "title": "Benchmarking multilingual translation at low data budgets",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Carmen Tanaka",
+        "Carmen Abbott",
+        "Samir Ueda"
+      ],
+      "abstract": "We study multilingual translation at low data budgets. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Multilingual Translation",
+      "institutions": [
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1087,
+      "kind": "Poster",
+      "title": "Scaling laws for model compression",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Omar Ueda",
+        "Greta Okafor",
+        "Ines Valente",
+        "Zora Nakamura",
+        "Jade Tanaka",
+        "Ivo Yilmaz"
+      ],
+      "abstract": "We study model compression for edge devices. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Atlas College",
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1088,
+      "kind": "Poster",
+      "title": "Scaling laws for federated learning",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Marco Tanaka",
+        "Bilal Ito",
+        "Yusuf Fonseca"
+      ],
+      "abstract": "We study federated learning in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Harbor AI Research",
+        "Coastal University",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1089,
+      "kind": "Poster",
+      "title": "Faster active learning with fewer parameters",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Alba Okafor",
+        "Giulia Santos",
+        "Giulia Weber",
+        "Yusuf Horvat"
+      ],
+      "abstract": "We study active learning in the wild. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Active Learning",
+      "institutions": [
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1090,
+      "kind": "Poster",
+      "title": "Benchmarking uncertainty estimation at scale",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Paula Yilmaz",
+        "Wanda Berger"
+      ],
+      "abstract": "We study uncertainty estimation at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Uncertainty Estimation",
+      "institutions": [
+        "Delta Systems Lab"
+      ]
+    },
+    {
+      "id": 1091,
+      "kind": "Poster",
+      "title": "Sharper evaluations of federated learning",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Kaito Bianchi",
+        "Marco Xavier"
+      ],
+      "abstract": "We study federated learning without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Example Institute of Technology",
+        "University of Lisbon",
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1092,
+      "kind": "Poster",
+      "title": "A simple baseline for model compression at scale",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Wen Horvat",
+        "Alba Pereira",
+        "Tessa Almeida"
+      ],
+      "abstract": "We study model compression at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Model Compression",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1093,
+      "kind": "Poster",
+      "title": "Benchmarking reinforcement learning from feedback without labels",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Marco Fonseca",
+        "Mateo Lindqvist"
+      ],
+      "abstract": "We study reinforcement learning from feedback without labels. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that matches larger models at a fraction of the cost, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Reinforcement Learning From Feedback",
+      "institutions": [
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1094,
+      "kind": "Poster",
+      "title": "What causal inference forgets",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Jade Bianchi",
+        "Farid Berger",
+        "Bilal Engel",
+        "Felix Duarte",
+        "Esme Weber"
+      ],
+      "abstract": "We study causal inference under distribution shift. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Meridian Labs"
+      ]
+    },
+    {
+      "id": 1095,
+      "kind": "Poster",
+      "title": "A simple baseline for federated learning at scale",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Hana Pereira",
+        "Greta Weber",
+        "Ada Jensen",
+        "Mateo Tanaka"
+      ],
+      "abstract": "We study federated learning at scale. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that fails in a predictable way that a small change fixes, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Federated Learning",
+      "institutions": [
+        "Example Institute of Technology",
+        "Coastal University"
+      ]
+    },
+    {
+      "id": 1096,
+      "kind": "Poster",
+      "title": "A simple baseline for causal inference in low-resource languages",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Karim Quaresma",
+        "Bilal Tanaka",
+        "Wanda Horvat"
+      ],
+      "abstract": "We study causal inference in low-resource languages. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that transfers across three domains, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Causal Inference",
+      "institutions": [
+        "Meridian Labs",
+        "Northbridge University",
+        "University of Lisbon"
+      ]
+    },
+    {
+      "id": 1097,
+      "kind": "Poster",
+      "title": "Scaling laws for tabular learning",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Samir Abbott",
+        "Nadia Carvalho",
+        "Wen Horvat",
+        "Quentin Tanaka"
+      ],
+      "abstract": "We study tabular learning for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that needs far less tuning than reported, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Tabular Learning",
+      "institutions": [
+        "Delta Systems Lab",
+        "University of Lisbon",
+        "Example Institute of Technology"
+      ]
+    },
+    {
+      "id": 1098,
+      "kind": "Poster",
+      "title": "Faster active learning with fewer parameters",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "South Hall",
+      "parent": 1080,
+      "authors": [
+        "Viktor Haddad",
+        "Zora Bianchi",
+        "Diego Yilmaz"
+      ],
+      "abstract": "We study active learning for long contexts. Existing approaches trade accuracy for cost in ways that are hard to predict. We propose a method that closes most of the gap to the oracle, and we release code and data so others can check the result. This abstract is made up: ExampleConf is a demo conference.",
+      "topic": "Active Learning",
+      "institutions": [
+        "Meridian Labs",
+        "Atlas College"
+      ]
+    },
+    {
+      "id": 1099,
+      "kind": "Demo",
+      "title": "Demo: multilingual translation you can try on your phone",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Umberto Yilmaz",
+        "Ada Weber"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1100,
+      "kind": "Demo",
+      "title": "Demo: protein structure prediction you can try on your phone",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Esme Almeida",
+        "Alba Dubois"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1101,
+      "kind": "Demo",
+      "title": "Demo: active learning you can try on your phone",
+      "start": "2026-10-14T16:00",
+      "durationMinutes": 120,
+      "room": "N1.2",
+      "authors": [
+        "Uma Santos",
+        "Ivo Duarte"
+      ],
+      "abstract": "Bring a phone and try it at the booth. (Demo data.)"
+    },
+    {
+      "id": 1102,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-14T10:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1103,
+      "kind": "Break",
+      "title": "Lunch",
+      "start": "2026-10-14T12:30",
+      "durationMinutes": 75,
+      "room": "Garden Terrace"
+    },
+    {
+      "id": 1104,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-14T15:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1105,
+      "kind": "Meetup",
+      "title": "Newcomers meetup",
+      "start": "2026-10-13T18:00",
+      "durationMinutes": 60,
+      "room": "N1.1",
+      "abstract": "First time at ExampleConf? Meet other newcomers and a few long-time attendees."
+    },
+    {
+      "id": 1106,
+      "kind": "Workshop",
+      "title": "Workshop on robot manipulation at scale",
+      "start": "2026-10-15T09:00",
+      "durationMinutes": 480,
+      "room": "N1.1",
+      "authors": [
+        "Yusuf Tanaka",
+        "Quentin Almeida",
+        "Nadia Duarte"
+      ],
+      "abstract": "Invited talks, contributed papers and a panel on robot manipulation. (Demo data.)",
+      "links": [
+        [
+          "Workshop website",
+          "https://example.org/workshops"
+        ]
+      ]
+    },
+    {
+      "id": 1107,
+      "kind": "Workshop",
+      "title": "Workshop on causal inference under distribution shift",
+      "start": "2026-10-15T09:00",
+      "durationMinutes": 480,
+      "room": "N1.2",
+      "authors": [
+        "Uma Xavier",
+        "Ivo Dubois",
+        "Sven Iversen",
+        "Olga Duarte"
+      ],
+      "abstract": "Invited talks, contributed papers and a panel on causal inference. (Demo data.)",
+      "links": [
+        [
+          "Workshop website",
+          "https://example.org/workshops"
+        ]
+      ]
+    },
+    {
+      "id": 1108,
+      "kind": "Workshop",
+      "title": "Workshop on reinforcement learning from feedback at low data budgets",
+      "start": "2026-10-15T09:00",
+      "durationMinutes": 210,
+      "room": "N2.1",
+      "authors": [
+        "Omar Haddad",
+        "Elena Gallo",
+        "Lucia Yilmaz"
+      ],
+      "abstract": "Invited talks, contributed papers and a panel on reinforcement learning from feedback. (Demo data.)",
+      "links": [
+        [
+          "Workshop website",
+          "https://example.org/workshops"
+        ]
+      ]
+    },
+    {
+      "id": 1109,
+      "kind": "Workshop",
+      "title": "Workshop on reinforcement learning from feedback without labels",
+      "start": "2026-10-15T13:30",
+      "durationMinutes": 210,
+      "room": "N2.1",
+      "authors": [
+        "Wanda Berger",
+        "Alba Xavier",
+        "Sven Carvalho"
+      ],
+      "abstract": "Invited talks, contributed papers and a panel on reinforcement learning from feedback. (Demo data.)",
+      "links": [
+        [
+          "Workshop website",
+          "https://example.org/workshops"
+        ]
+      ]
+    },
+    {
+      "id": 1110,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-15T10:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1111,
+      "kind": "Break",
+      "title": "Lunch",
+      "start": "2026-10-15T12:30",
+      "durationMinutes": 75,
+      "room": "Garden Terrace"
+    },
+    {
+      "id": 1112,
+      "kind": "Break",
+      "title": "Coffee break",
+      "start": "2026-10-15T15:30",
+      "durationMinutes": 30,
+      "room": "South Hall"
+    },
+    {
+      "id": 1113,
+      "kind": "Meetup",
+      "title": "Mentoring lunch",
+      "abstract": "Time and room to be announced."
+    },
+    {
+      "id": 1114,
+      "kind": "Demo",
+      "title": "Industry demo session"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="{{page.description}}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="WhichTalk">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#f2f4f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<title>{{page.title}}</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="canonical" href="{{page.canonical}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WhichTalk">
+<meta property="og:title" content="{{page.title}}">
+<meta property="og:description" content="{{page.ogDescription}}">
+<meta property="og:url" content="{{page.canonical}}">
+<meta property="og:image" content="{{page.canonical}}og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="WhichTalk logo, a conference badge on a lanyard, next to the line: Which talk are you going to?">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+// Runs before the first paint: apply the saved theme so the page never flashes the wrong palette.
+(function () {
+  var root = document.documentElement
+  try {
+    root.dataset.theme = JSON.parse(localStorage.getItem('{{storageNamespace}}theme')) || 'system'
+  } catch (err) {}
+  // Browsers reject a manifest on file:// with console errors; it is only useful once hosted.
+  if (location.protocol === 'http:' || location.protocol === 'https:') {
+    var manifest = document.createElement('link')
+    manifest.rel = 'manifest'
+    manifest.href = 'manifest.webmanifest'
+    document.head.append(manifest)
+  }
+})()
+</script>
+<!-- @styles -->
+</head>
+<body>
+<header class="rail" id="rail">
+  <div class="rail-inner">
+    <button class="wordmark" id="home-link" aria-label="WhichTalk, {{name}}: go to Today"><svg class="wordmark-logo" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="wtN" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26324D"/><stop offset="1" stop-color="#141C2F"/></linearGradient><linearGradient id="wtA" gradientUnits="userSpaceOnUse" x1="194" y1="238" x2="318" y2="362"><stop offset="0" stop-color="#0EA5E9"/><stop offset=".55" stop-color="#6366F1"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#wtN)"/><path fill="#0EA5E9" d="M124 0H204L288 180H236Z"/><path fill="#EC4899" d="M388 0H308L224 180H276Z"/><rect x="112" y="178" width="288" height="302" rx="54" fill="#fff"/><rect x="210" y="146" width="92" height="64" rx="18" fill="#0B1220"/><circle cx="256" cy="300" r="62" fill="url(#wtA)"/><rect x="172" y="394" width="168" height="34" rx="17" fill="#0B1220"/></svg><span class="wordmark-name">WhichTalk</span></button>
+    <div class="event-scope"><b>{{name}}</b><span>Unofficial planner</span></div>
+    <nav class="nav-tabs" id="nav-tabs" role="tablist" aria-label="Sections"></nav>
+    <div class="search-field" id="search-field" hidden>
+      <span class="icon" data-icon="search"></span>
+      <input id="search-input" type="search" placeholder="Search talks, papers, people, rooms" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Search">
+      <button class="search-clear" id="search-clear" aria-label="Clear search" hidden></button>
+      <button class="text-button" id="search-cancel">Cancel</button>
+    </div>
+    <button id="search-open" aria-label="Search" title="Search ( / )"><span class="label" aria-hidden="true">Search</span><kbd aria-hidden="true">/</kbd></button>
+    <div class="rail-actions">
+      <button class="account" id="account-button" aria-label="You: interests, sync and backup" aria-pressed="false"><span class="label" aria-hidden="true">You</span><small aria-hidden="true">Interests, sync, backup</small></button>
+    </div>
+    <p class="rail-note">Unofficial. Not affiliated with {{page.organizer}}.</p>
+  </div>
+</header>
+
+<main class="content" id="content"><div class="page" id="page"></div>
+<footer class="page-footer">
+  <p><b>WhichTalk</b> is an unofficial, community-built planner. It is not affiliated with or endorsed by {{page.organizer}}. Schedule data comes from {{page.sourceName}} and may change, so check the official schedule before you go.</p>
+  <p class="page-footer-links"><a href="{{page.officialSchedule}}" target="_blank" rel="noopener">Official schedule</a><a href="https://github.com/jacopopiogargano/whichtalk" target="_blank" rel="noopener">Source on GitHub</a><a href="../../">whichtalk.com</a></p>
+</footer>
+</main>
+
+<nav class="bottom-nav" id="bottom-nav" role="tablist" aria-label="Sections"></nav>
+
+<!-- Overlays: event details and panels (#overlay), forms and confirmations (#dialog), the shortcuts list. -->
+<dialog class="overlay" id="overlay"></dialog>
+<dialog class="overlay" id="dialog" aria-labelledby="dialog-title"></dialog>
+<dialog class="overlay shortcuts" id="shortcuts" aria-labelledby="shortcuts-title">
+  <div class="overlay-head"><span class="overlay-handle" aria-hidden="true"></span><h2 id="shortcuts-title">Keyboard shortcuts</h2><span class="fill"></span><form method="dialog"><button class="icon-button overlay-close" aria-label="Close"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span></button></form></div>
+  <div class="overlay-body">
+    <dl>
+      <dt><kbd>/</kbd></dt><dd>Search</dd>
+      <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>Previous or next day in the Schedule</dd>
+      <dt><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></dt><dd>Today, Schedule, My plan</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Close a sheet, or clear the search</dd>
+    </dl>
+    <p>Your plan, interests, people and notes are stored on this device only. Nothing is sent anywhere unless you start an import.</p>
+  </div>
+</dialog>
+
+<div class="snackbar" id="snackbar" role="status" aria-live="polite"></div>
+<input type="file" id="backup-file" accept="application/json,.json" hidden>
+
+<!-- @catalog -->
+<!-- @app -->
+</body>
+</html>

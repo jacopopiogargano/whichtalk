@@ -1,0 +1,32 @@
+{
+  "id": "your-conference-2027",
+  "name": "YourConf 2027",
+  "shortName": "YourConf",
+  "output": "docs/yourconf/2027",
+  "page": {
+    "title": "WhichTalk · YourConf 2027",
+    "description": "Which talk are you going to? A free, fast, offline-friendly planner for the YourConf 2027 program. Unofficial. Everything stays on your device.",
+    "ogDescription": "Which talk are you going to? A free, fast, offline-friendly planner for YourConf 2027.",
+    "canonical": "https://whichtalk.com/yourconf/2027/",
+    "officialSchedule": "https://yourconf.org/2027/program",
+    "organizer": "the YourConf organizers",
+    "sourceName": "yourconf.org"
+  },
+  "home": { "listed": true, "summary": "City · Month 2027", "badge": "’27" },
+  "defaultLocation": "MAIN",
+  "locations": [
+    { "key": "MAIN", "name": "City", "utcOffsetHours": 2, "zone": "CEST", "venue": "Venue name" }
+  ],
+  "tracks": [
+    { "key": "keynote", "label": "Keynotes", "singular": "Keynote", "kinds": ["Keynote"] },
+    { "key": "talk", "label": "Talks", "singular": "Talk", "kinds": ["Talk", "Session"], "papers": true },
+    { "key": "poster", "label": "Posters", "singular": "Poster", "kinds": ["Poster"], "papers": true },
+    { "key": "workshop", "label": "Workshops", "singular": "Workshop", "kinds": ["Workshop"] },
+    { "key": "other", "label": "Other", "singular": "Event", "kinds": [] },
+    { "key": "break", "label": "Breaks", "singular": "Break", "kinds": ["Break"] }
+  ],
+  "hiddenTracks": ["break"],
+  "fallbackTrack": "other",
+  "kindLabels": {},
+  "source": { "type": "events-file", "path": "events.json" }
+}

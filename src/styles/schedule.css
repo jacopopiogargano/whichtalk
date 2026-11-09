@@ -1,0 +1,239 @@
+/* Schedule (day picker, filter summary, timeslots), pick cards (For you) and compact paper rows. */
+
+/* ---- day picker ---- */
+.toggle-group.day-picker {
+  display: flex;
+  margin: 20px 0 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.toggle-group.day-picker::-webkit-scrollbar {
+  display: none;
+}
+
+.toggle-group.day-picker button {
+  flex: 1 0 auto;
+  min-width: 64px;
+  height: 48px;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1.2;
+  padding: 0 10px;
+}
+
+.toggle-group.day-picker .day-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.toggle-group.day-picker .day-num {
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.toggle-group.day-picker button[aria-pressed=true] .day-name {
+  color: inherit;
+  opacity: .75;
+}
+
+.toggle-group.day-picker button.is-today .day-num {
+  color: var(--color-alert-text);
+}
+
+.toggle-group.day-picker button.is-today[aria-pressed=true] .day-num {
+  color: inherit;
+}
+
+/* ---- filter summary ---- */
+.filter-summary {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.button.is-on {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-color: transparent;
+}
+
+.button.is-on .icon {
+  color: var(--color-accent);
+}
+
+/* ---- timeslots ---- */
+.timeslot {
+  margin-top: 28px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 160px;
+}
+
+.timeslot-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeslot-head.is-live {
+  color: var(--color-alert-text);
+}
+
+.chip {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 7px;
+  line-height: 20px;
+  border-radius: var(--radius-chip);
+  background: var(--color-alert-soft);
+  color: var(--color-alert-text);
+}
+
+.item.is-untimed {
+  padding-left: 16px;
+}
+
+/* ---- pick cards ---- */
+.pick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pick-card {
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 14px 10px 16px 16px;
+  min-height: 176px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .pick-card:hover {
+    border-color: var(--color-border-strong);
+    background: var(--color-panel-alt);
+  }
+}
+
+.pick-card.is-skeleton {
+  cursor: default;
+}
+
+.pick-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  min-height: 24px;
+}
+
+.pick-top .star-toggle {
+  margin: -8px -2px -8px 0;
+}
+
+.pick-card h3 {
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow-wrap: anywhere;
+  padding-right: 6px;
+}
+
+.pick-reason {
+  font-size: 12px;
+  color: var(--color-accent);
+  padding-right: 6px;
+}
+
+.pick-where {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: auto;
+}
+
+/* ---- papers ---- */
+.paper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 10px 10px 16px;
+  position: relative;
+  cursor: pointer;
+}
+
+.paper-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.paper-title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.paper-authors {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-match {
+  font-size: 12px;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+.paper .paper-clash {
+  color: var(--color-alert-text);
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.paper .paper-when {
+  color: var(--color-text-secondary);
+  margin-right: 8px;
+}
+
+.paper .star-toggle {
+  margin: -8px 0;
+}
+
+.item.is-more {
+  color: var(--color-text);
+  font-size: 14px;
+  font-weight: 500;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-strong);
+  text-underline-offset: 3px;
+}

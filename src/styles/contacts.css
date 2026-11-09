@@ -1,0 +1,250 @@
+/* My plan: contacts, the note log and to-do lists. */
+
+/* ---- contacts ---- */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 8px 24px;
+  padding: 16px;
+  position: relative;
+}
+
+.contact + .contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+.contact header {
+  grid-column: 1;
+  grid-row: 1 / span 4;
+}
+
+.contact h3 {
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.contact .affiliation {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.contact > *:not(header) {
+  grid-column: 2;
+}
+
+.priority {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+.priority.is-high {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.contact-reason {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  max-width: 72ch;
+}
+
+.contact .whereabouts {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact .whereabouts .helper {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.where-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.where-row + .where-row {
+  border-top: 1px solid var(--color-divider);
+}
+
+.where-row .where-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.where-row b {
+  font-weight: 500;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.where-row b:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.where-row span {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.where-row .star-toggle {
+  margin: -6px 0;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.contact-actions .helper {
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.contact-actions .toggle-group button {
+  height: 28px;
+  font-size: 13px;
+  padding: 0 10px;
+}
+
+.contact .link-list a {
+  font-size: 14px;
+}
+
+.contact .helper {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .contact {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact header,
+  .contact > *:not(header) {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}
+
+/* ---- note log ---- */
+.note-log {
+  display: flex;
+  flex-direction: column;
+}
+
+.note-entry {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+  position: relative;
+}
+
+.note-entry + .note-entry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-divider);
+}
+
+.note-entry time {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.note-entry h3 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.note-entry h3 .affiliation,
+.section-head h2 .affiliation {
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.note-entry .helper {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.note-entry p {
+  margin-top: 8px;
+  white-space: pre-wrap;
+  color: var(--color-text-secondary);
+  max-width: 72ch;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .note-entry {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
+/* ---- to-do list ---- */
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-list label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 15px;
+}
+
+.todo-list input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-text);
+  flex: none;
+}
+
+.todo-list label.is-done span {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+.note-entry .todo-list {
+  margin-top: 10px;
+}

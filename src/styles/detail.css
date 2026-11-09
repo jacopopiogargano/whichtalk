@@ -1,0 +1,213 @@
+/* Event detail: title, facts, sections, abstract, links and the list of people. */
+
+/* ---- title, facts, sections ---- */
+.detail {
+  padding-top: 8px;
+}
+
+.detail > h2 {
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -.015em;
+  margin: 0 0 14px;
+  overflow-wrap: anywhere;
+}
+
+.detail-facts {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 8px 12px;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.detail-facts .icon {
+  color: var(--color-text-muted);
+  margin-top: 3px;
+}
+
+.detail-facts .meta-tag.is-live {
+  color: var(--color-alert-text);
+  font-weight: 600;
+}
+
+.detail-facts .meta-tag {
+  color: var(--color-text-muted);
+}
+
+.detail-reasons {
+  margin-top: 14px;
+}
+
+.detail-section {
+  margin-top: 26px;
+}
+
+.detail-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 10px;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.detail-section h4 .fill {
+  flex: 1;
+}
+
+.detail-section h4 .inline-note {
+  font-weight: 400;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.detail-section h4.is-warn {
+  color: var(--color-alert-text);
+}
+
+.detail-section h4.is-warn .text-button {
+  font-size: 12px;
+}
+
+/* ---- abstract, hint, links ---- */
+.abstract-text p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text);
+  max-width: 68ch;
+  margin: 0 0 14px;
+}
+
+.abstract-text.is-clipped {
+  max-height: 300px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+
+.hint {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ---- people filter and names ---- */
+.people-filter {
+  position: sticky;
+  top: -8px;
+  z-index: 1;
+  background: var(--color-panel);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+
+.people-filter input {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-panel);
+  padding: 0 12px;
+  font-size: 15px;
+  outline: none;
+}
+
+.people-filter input:focus {
+  border-color: var(--color-text);
+}
+
+.people-filter span {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.name-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.name-chip {
+  font-size: 14px;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.name-chip > button:first-child:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.name-chip button[aria-label^="Add"] {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-control);
+  display: grid;
+  place-items: center;
+  color: var(--color-text-secondary);
+}
+
+.name-chip button[aria-label^="Add"]:hover {
+  background: var(--color-fill);
+}
+
+.name-chip button .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.name-chip.is-wanted {
+  color: var(--color-accent);
+}
+
+.name-chip.is-suggested {
+  color: var(--color-text);
+  gap: 6px;
+}
+
+.name-chip.is-suggested .icon {
+  color: var(--color-accent);
+  width: 15px;
+  height: 15px;
+}
+
+.name-chip.is-suggested:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.name-chip .in-contacts {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+/* ---- meta tags ---- */
+.meta-tag {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.meta-tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
