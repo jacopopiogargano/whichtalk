@@ -102,10 +102,10 @@
 }
 
 .page-head h1 {
-  font-size: 28px;
-  line-height: 1.15;
-  font-weight: 600;
-  letter-spacing: -.02em;
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -.035em;
 }
 
 .page-head .page-meta {

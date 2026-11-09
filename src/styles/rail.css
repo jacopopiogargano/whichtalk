@@ -4,6 +4,33 @@
   One markup serves every layout, so the children are placed with flex `order`.
 */
 
+/* ---- night: the rail and the phone's bottom bar keep the navy of whichtalk.com in every theme.
+   The colour roles are re-declared here, so every rule inside reads them unchanged. ---- */
+.rail,
+.bottom-nav {
+  --color-ground: var(--night);
+  --color-panel: var(--night-2);
+  --color-panel-alt: var(--night-3);
+  --color-fill: var(--night-3);
+  --color-border: var(--night-2);
+  --color-divider: var(--night-2);
+  --color-border-strong: #33415f;
+  --color-text: var(--night-ink);
+  --color-text-secondary: #d3d9e4;
+  --color-text-muted: var(--night-muted);
+  --color-control: #7d89a1;
+  --color-primary: var(--night-ink);
+  --color-on-primary: var(--night);
+  --color-accent: var(--sky);
+  --color-accent-mark: var(--sky);
+  --color-accent-soft: #0d2533;
+  --color-alert: var(--pink);
+  --color-alert-text: var(--pink);
+  --color-alert-soft: #3a1229;
+  color: var(--color-text);
+  color-scheme: dark;
+}
+
 /* ---- bar ---- */
 .rail {
   position: sticky;

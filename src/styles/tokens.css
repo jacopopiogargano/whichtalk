@@ -2,7 +2,7 @@
   Design tokens and the Geist font.
 
   The look in brief: a blue-grey ground with white panels (1px border, 8px corners, no shadow at
-  rest) and ink-coloured chrome. Sky blue is reserved for the user's own data (starred sessions,
+  rest) inside night chrome: the rail and the phone's bars are always navy, like whichtalk.com. Sky blue is reserved for the user's own data (starred sessions,
   their blocks in the grids, the day timeline); pink only marks "now" and clashes; primary actions
   are near-black. Type is Geist: 28px page titles, 16px section and card titles, 15px item titles,
   14px body, 13px meta, never below 12px, tabular figures for every time and count. Only overlays,
@@ -63,6 +63,14 @@
   --color-highlight: #fef3c7;
   --color-scrim: rgb(11 18 32 / .4);
   --shadow-float: 0 20px 48px rgb(11 18 32 / .16), 0 2px 6px rgb(11 18 32 / .06);
+  /* Night: the rail, the phone's bars and the Now/Next board, the same in every theme (as on whichtalk.com). */
+  --night: #0b1220;
+  --night-2: #172036;
+  --night-3: #212c46;
+  --night-ink: #f4f6fa;
+  --night-muted: #a9b3c6;
+  --sky: #38bdf8;
+  --pink: #f472b6;
   color-scheme: light;
 }
 

@@ -125,13 +125,16 @@ function todayNextUp (phase) {
   const ahead = starredEvents().filter(e => e.start && e.end > t).sort((a, b) => a.start - b.start)
   const live = ahead.find(e => isOngoing(e))
   const next = ahead.find(e => e.start > t)
-  const line = (label, e, facts) => h('button', { class: 'next-up' + (label === 'Now' ? ' is-live' : ''), onclick: () => showEvent(e.id) },
-    h('b', {}, `${label}: `), facts.filter(Boolean).join(', '))
-  if (!live && !next) return h('p', { class: 'next-up is-quiet' }, 'Nothing else in your plan today.')
-  return [
-    live ? line('Now', live, [todayShortTitle(live), kindName(live), live.room, `until ${clock(live.end)}`]) : null,
-    next ? line('Next', next, [dayOf(next.start) === dayOf(t) ? clock(next.start) : whenLabel(next), todayShortTitle(next), kindName(next), next.room]) : null,
-  ]
+  const line = (label, e, time) => h('button', { class: 'next-up' + (label === 'Now' ? ' is-live' : ''), onclick: () => showEvent(e.id) },
+    h('span', { class: 'next-up-body' },
+      h('span', { class: 'visually-hidden' }, `${label}: `),
+      h('span', { class: 'next-up-title' }, todayShortTitle(e)),
+      h('span', { class: 'next-up-meta' }, [kindName(e), e.room].filter(Boolean).join(' · '))),
+    h('span', { class: 'next-up-tag' }, h('b', { 'aria-hidden': 'true' }, label), h('span', {}, time)))
+  if (!live && !next) return h('p', { class: 'next-quiet' }, 'Nothing else in your plan today.')
+  return h('div', { class: 'next-board' },
+    live ? line('Now', live, `until ${clock(live.end)}`) : null,
+    next ? line('Next', next, dayOf(next.start) === dayOf(t) ? clock(next.start) : whenLabel(next)) : null)
 }
 
 // The plan in four numbers. Each cell opens the place where its number changes; an empty cell

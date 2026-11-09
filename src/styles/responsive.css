@@ -45,7 +45,7 @@
     bottom: 0;
     z-index: 20;
     padding: 4px 8px calc(4px + env(safe-area-inset-bottom));
-    background: var(--color-panel);
+    background: var(--color-ground);
     border-top: 1px solid var(--color-border);
   }
 
@@ -102,7 +102,7 @@
 
   .intro-title,
   .page-head h1 {
-    font-size: 24px;
+    font-size: 30px;
   }
 
   .section {
@@ -123,7 +123,7 @@
   }
 
   .tally-cell .tally-value {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .overlay {
