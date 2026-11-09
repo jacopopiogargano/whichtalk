@@ -49,6 +49,8 @@ settings and data in `conferences/`, so adding one usually takes no code at all.
   conference needs different behavior, add a field to `conference.json` and read it in
   `src/data/conference.js`.
 - `whichtalk/` is the build (Python 3.9+, standard library only).
+- `src/home.html` is the whichtalk.com homepage. Build it with `python3 -I whichtalk home`; it lists
+  every conference with `home.listed` and takes its pictures and video from `static/home/`.
 - Run the tests before opening a pull request:
   ```sh
   python3 -I -m unittest discover tests

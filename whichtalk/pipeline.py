@@ -113,9 +113,9 @@ def run_home(out: Path, src: Optional[Path] = None, conferences_dir: Optional[Pa
     try:
         conferences: List[Conference] = [load_conference(cid, root, folder) for cid in conference_ids(folder)]
         page = render_home(template.read_text(encoding='utf-8'), conferences)
+        write_home(page, out, root / 'static')
     except (ConfigError, SiteError, OSError) as exc:
         log.error('homepage not written: %s', exc)
         return 1
-    write_home(page, out, root / 'static')
     log.info('homepage: %s -> %s', ', '.join(c.id for c in conferences if c.home['listed']) or 'no listed conference', out)
     return 0
