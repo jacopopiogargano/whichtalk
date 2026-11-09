@@ -8,9 +8,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="WhichTalk">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#f2f4f7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#0B1220">
 <title>{{page.title}}</title>
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -66,7 +65,7 @@
 
 <main class="content" id="content"><div class="page" id="page"></div>
 <footer class="page-footer">
-  <p><b>WhichTalk</b> is an unofficial, community-built planner. It is not affiliated with or endorsed by {{page.organizer}}. Schedule data comes from {{page.sourceName}} and may change, so check the official schedule before you go.</p>
+  <p><b>WhichTalk</b> is an unofficial, community-built planner. It is not affiliated with or endorsed by {{page.organizer}}. Schedule data comes from {{page.sourceName}} and may change, so check the official schedule before you go. Visits are counted with GoatCounter, without cookies or anything that identifies you; your plan stays on your device.</p>
   <p class="page-footer-links"><a href="{{page.officialSchedule}}" target="_blank" rel="noopener">Official schedule</a><a href="https://github.com/jacopopiogargano/whichtalk" target="_blank" rel="noopener">Source on GitHub</a><a href="../../">whichtalk.com</a></p>
 </footer>
 </main>
@@ -94,5 +93,15 @@
 
 <!-- @catalog -->
 <!-- @app -->
+<script>
+// Visit counter, only on whichtalk.com: GoatCounter, without cookies or anything that identifies the visitor,
+// and skipped when the browser asks not to be tracked. The same lines are in src/home.html, src/index.html, src/404.html.
+if (location.hostname === 'whichtalk.com' && !navigator.globalPrivacyControl && navigator.doNotTrack !== '1') {
+  addEventListener('load', function () {
+    var q = new URLSearchParams({ p: location.pathname, t: document.title, r: document.referrer, s: [screen.width, screen.height, window.devicePixelRatio || 1].join(','), rnd: String(Math.random()).slice(2) })
+    new Image().src = 'https://whichtalk.goatcounter.com/count?' + q
+  })
+}
+</script>
 </body>
 </html>

@@ -20,7 +20,7 @@ from .cache import now_iso
 from .checks import ConfigError
 from .config import CONFERENCES_DIR, ROOT, Conference, conference_ids, load_conference
 from .dataset import build_catalog, catalog_json, shard_scripts
-from .home import render_home, write_home
+from .home import ROBOTS, render_home, sitemap, write_home
 from .keywords import abstract_keywords
 from .site import SiteError, Sources, page_path, render_page, write_site
 from .sources import LoadOptions, SourceError
@@ -28,6 +28,7 @@ from .sources import LoadOptions, SourceError
 log = logging.getLogger(__name__)
 
 HOME_TEMPLATE = 'home.html'
+NOT_FOUND_TEMPLATE = '404.html'
 
 
 @dataclass
@@ -108,12 +109,14 @@ def run_check(ref: str, offline: bool = False, conferences_dir: Optional[Path] =
 
 
 def run_home(out: Path, src: Optional[Path] = None, conferences_dir: Optional[Path] = None, root: Path = ROOT) -> int:
-    template = (src or root / 'src') / HOME_TEMPLATE
+    templates = src or root / 'src'
     folder = conferences_dir or CONFERENCES_DIR
     try:
         conferences: List[Conference] = [load_conference(cid, root, folder) for cid in conference_ids(folder)]
-        page = render_home(template.read_text(encoding='utf-8'), conferences)
-        write_home(page, out, root / 'static')
+        page = render_home((templates / HOME_TEMPLATE).read_text(encoding='utf-8'), conferences)
+        not_found = render_home((templates / NOT_FOUND_TEMPLATE).read_text(encoding='utf-8'), conferences)
+        write_home(page, out, root / 'static',
+                   {'404.html': not_found, 'robots.txt': ROBOTS, 'sitemap.xml': sitemap(conferences)})
     except (ConfigError, SiteError, OSError) as exc:
         log.error('homepage not written: %s', exc)
         return 1

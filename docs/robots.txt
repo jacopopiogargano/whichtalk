@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whichtalk.com/sitemap.xml

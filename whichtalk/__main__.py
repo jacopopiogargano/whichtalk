@@ -79,7 +79,7 @@ def make_parser() -> argparse.ArgumentParser:
     home = commands.add_parser('home', parents=[common], help='build the homepage from the listed conferences')
     home.add_argument('--out', type=Path, metavar='FILE', default=ROOT / 'docs' / 'index.html',
                       help='where to write it (default: docs/index.html)')
-    home.add_argument('--src', type=Path, metavar='DIR', help='folder with home.html; default: src')
+    home.add_argument('--src', type=Path, metavar='DIR', help='folder with home.html and 404.html; default: src')
     return parser
 
 

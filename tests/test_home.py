@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import copy
+import re
 import sys
 import tempfile
 import unittest
@@ -12,7 +13,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from whichtalk.config import conference_ids, load_conference, parse_conference  # noqa: E402
-from whichtalk.home import HOME_FILE, join_names, render_home, write_home  # noqa: E402
+from whichtalk.home import HOME_FILE, ROBOTS, join_names, render_home, sitemap, write_home  # noqa: E402
 from whichtalk.pipeline import run_home  # noqa: E402
 from whichtalk.site import SiteError  # noqa: E402
 
@@ -69,6 +70,20 @@ class Render(unittest.TestCase):
         self.assertEqual(join_names(['A', 'B']), 'A and B')
         self.assertEqual(join_names(['A', 'B', 'C']), 'A, B and C')
 
+    def test_sitemap_lists_the_homepage_and_listed_conferences(self) -> None:
+        alpha, beta = fixtures()[1], fixtures()[0]
+        self.assertEqual(sitemap([beta, alpha]), '''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://whichtalk.com/</loc></url>
+  <url><loc>https://whichtalk.com/alpha/2026/</loc></url>
+  <url><loc>https://whichtalk.com/beta/2027/</loc></url>
+</urlset>
+''')
+        data = copy.deepcopy(beta.data)
+        data['home']['listed'] = False
+        self.assertNotIn('beta', sitemap([alpha, parse_conference(data)]))
+        self.assertIn('Sitemap: https://whichtalk.com/sitemap.xml', ROBOTS)
+
     def test_marker_must_appear_once(self) -> None:
         with self.assertRaisesRegex(SiteError, 'exactly once'):
             render_home('<p>{{nowFor}}</p>\n', fixtures())
@@ -97,6 +112,15 @@ class WriteHome(unittest.TestCase):
             self.assertEqual(sorted(p.name for p in out.parent.iterdir() if p.is_file()), ['favicon.svg', 'index.html', 'og.png'])
             self.assertEqual(sorted(p.name for p in (out.parent / 'home').iterdir()), ['a-dark.jpg', 'a.jpg', 'b.jpg', 'b.mp4'])
 
+    def test_extra_files_are_written_and_their_files_copied(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            static, out = self.static(Path(tmp)), Path(tmp) / 'site' / 'index.html'
+            write_home('<p>home</p>\n', out, static, {'404.html': '<img src="home/a.jpg"><link href="sw.js">\n', 'robots.txt': 'r\n'})
+            self.assertEqual((out.parent / '404.html').read_text(encoding='utf-8'), '<img src="home/a.jpg"><link href="sw.js">\n')
+            self.assertEqual((out.parent / 'robots.txt').read_text(encoding='utf-8'), 'r\n')
+            self.assertTrue((out.parent / 'sw.js').is_file())
+            self.assertTrue((out.parent / 'home' / 'a.jpg').is_file())
+
     def test_missing_media_stops_before_writing(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             static, out = self.static(Path(tmp)), Path(tmp) / 'site' / 'index.html'
@@ -123,6 +147,24 @@ class RepoHomepage(unittest.TestCase):
             self.assertTrue(media)
             for name in media:
                 self.assertTrue((Path(tmp) / 'home' / name).is_file(), name)
+            missing = (Path(tmp) / '404.html').read_text(encoding='utf-8')
+            self.assertIn('<base href="/">', missing)
+            self.assertNotIn('{{', missing)
+            for conf in listed:
+                self.assertIn(f'<span class="name">{conf.name}</span>', missing)
+                self.assertIn(f'<loc>{conf.data["page"]["canonical"]}</loc>', (Path(tmp) / 'sitemap.xml').read_text(encoding='utf-8'))
+            self.assertEqual((Path(tmp) / 'robots.txt').read_text(encoding='utf-8'), ROBOTS)
+
+    def test_pages_share_one_visit_counter(self) -> None:
+        """The counter runs only on whichtalk.com; the three pages carry the same lines."""
+        found = set()
+        for name in ('home.html', 'index.html', '404.html'):
+            text = (ROOT / 'src' / name).read_text(encoding='utf-8')
+            blocks = re.findall(r'<script>\n// Visit counter.*?</script>\n', text, re.S)
+            self.assertEqual(len(blocks), 1, name)
+            found.add(blocks[0])
+        self.assertEqual(len(found), 1)
+        self.assertIn("location.hostname === 'whichtalk.com'", found.pop())
 
 
 if __name__ == '__main__':

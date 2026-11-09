@@ -50,7 +50,9 @@ settings and data in `conferences/`, so adding one usually takes no code at all.
   `src/data/conference.js`.
 - `whichtalk/` is the build (Python 3.9+, standard library only).
 - `src/home.html` is the whichtalk.com homepage. Build it with `python3 -I whichtalk home`; it lists
-  every conference with `home.listed` and takes its pictures and video from `static/home/`.
+  every conference with `home.listed` and takes its pictures and video from `static/home/`. The
+  same command writes `404.html` (from `src/404.html`, the page for unknown addresses),
+  `robots.txt` and `sitemap.xml`.
 - Run the tests before opening a pull request:
   ```sh
   python3 -I -m unittest discover tests

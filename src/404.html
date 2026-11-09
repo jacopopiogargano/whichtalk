@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex">
+<base href="/">
+<title>Page not found · WhichTalk</title>
+<meta name="theme-color" content="#0B1220">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<!--
+  GitHub Pages serves this for every address that has no page. <base href="/"> makes the
+  relative links below work from any depth. Built by `python3 -I whichtalk home` with the same
+  conference rows as the homepage.
+-->
+<style>
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 400 700; font-display: swap; src: url(geist-latin-ext.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Geist"; font-style: normal; font-weight: 400 700; font-display: swap; src: url(geist-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+:root {
+  --font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --night: #0B1220; --night-2: #172036; --night-3: #212C46; --night-ink: #F4F6FA; --night-muted: #A9B3C6; --sky: #38BDF8;
+  --gutter: clamp(20px, 2.6vw, 40px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; background: var(--night); color: var(--night-ink); font: 400 clamp(1.0625rem, 1rem + .25vw, 1.1875rem)/1.5 var(--font); -webkit-font-smoothing: antialiased; }
+h1, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--sky); color: var(--night); }
+.top { display: flex; align-items: center; gap: 10px; padding: 24px var(--gutter); font-size: 16px; font-weight: 600; letter-spacing: -.01em; text-decoration: none; align-self: flex-start; }
+.top img { width: 28px; height: 28px; }
+main { flex: 1; display: grid; align-content: center; padding: 48px var(--gutter) 96px; }
+.nf { width: min(640px, 100%); margin: 0 auto; }
+h1 { font-size: clamp(2.25rem, 1.4rem + 4vw, 4.5rem); font-weight: 500; line-height: 1.02; letter-spacing: -.045em; max-width: 12ch; }
+.lead { margin-top: 24px; color: var(--night-muted); max-width: 46ch; }
+.confs { margin-top: 40px; display: grid; gap: 4px; }
+.conf { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 4px 16px; min-height: 72px; padding: 12px 18px; border-radius: 4px; background: var(--night-2); text-decoration: none; transition: background-color .2s; }
+.conf:hover { background: var(--night-3); }
+.conf .yr { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 6px; background: var(--night-ink); color: var(--night); font-size: 14px; font-weight: 600; letter-spacing: -.02em; }
+.conf .name { font-size: clamp(1.125rem, 1.05rem + .35vw, 1.375rem); font-weight: 500; letter-spacing: -.015em; }
+.conf .val { color: var(--night-muted); font-size: .875rem; text-align: right; font-variant-numeric: tabular-nums; }
+.home { margin-top: 28px; display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 8px; background: var(--night-ink); color: var(--night); font-weight: 500; text-decoration: none; transition: background-color .2s; }
+.home:hover { background: #FFFFFF; }
+@media (max-width: 560px) {
+  .conf { grid-template-columns: 40px minmax(0, 1fr); }
+  .conf .val { grid-column: 2; text-align: left; }
+}
+</style>
+</head>
+<body>
+<a class="top" href="./"><img src="favicon.svg" alt="" width="28" height="28">WhichTalk</a>
+<main>
+  <div class="nf">
+    <h1>This talk is not on the program.</h1>
+    <p class="lead">Nothing lives at this address. The link may be old, or the conference may have moved. Pick one of these, or start from the homepage.</p>
+    <ul class="confs">
+      <!-- @conferences -->
+    </ul>
+    <a class="home" href="./">Go to the homepage</a>
+  </div>
+</main>
+<script>
+// Visit counter, only on whichtalk.com: GoatCounter, without cookies or anything that identifies the visitor,
+// and skipped when the browser asks not to be tracked. The same lines are in src/home.html, src/index.html, src/404.html.
+if (location.hostname === 'whichtalk.com' && !navigator.globalPrivacyControl && navigator.doNotTrack !== '1') {
+  addEventListener('load', function () {
+    var q = new URLSearchParams({ p: location.pathname, t: document.title, r: document.referrer, s: [screen.width, screen.height, window.devicePixelRatio || 1].join(','), rnd: String(Math.random()).slice(2) })
+    new Image().src = 'https://whichtalk.goatcounter.com/count?' + q
+  })
+}
+</script>
+</body>
+</html>

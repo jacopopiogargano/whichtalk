@@ -34,9 +34,14 @@ No login, no server, no tracking: everything you save stays on your device.
 
 ## Privacy
 
-All state lives in your browser (IndexedDB and localStorage). Nothing is sent anywhere unless
-you start it: profile imports call OpenAlex, Semantic Scholar or the website you enter, and
-each request is labelled with exactly what is sent where.
+All state lives in your browser (IndexedDB and localStorage). Your plan is not sent anywhere
+unless you start it: profile imports call OpenAlex, Semantic Scholar or the website you enter,
+and each request is labelled with exactly what is sent where.
+
+On whichtalk.com, each page view is counted with [GoatCounter](https://www.goatcounter.com):
+the page's path and title, the referring page and the screen size, with no cookies and nothing
+that identifies a visitor. The counter is skipped when the browser sends Do Not Track or Global
+Privacy Control, and copies of WhichTalk hosted anywhere else never run it.
 
 ## Run it
 
@@ -96,6 +101,7 @@ src/                  the shared app, as ES modules
   main.js             entry point
   index.html          planner page template ({{placeholders}} and <!-- @styles/@catalog/@app -->)
   home.html           homepage template (<!-- @conferences --> is filled from the listed conferences)
+  404.html            page for unknown addresses, built with the homepage (with robots.txt, sitemap.xml)
   lib/                DOM helpers, icons, time and text utilities
   data/               catalog decoding, conference settings, on-demand abstracts
   state/              store (prefs, data, ui), validation, IndexedDB and localStorage

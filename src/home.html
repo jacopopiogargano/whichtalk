@@ -516,7 +516,7 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
 <footer class="foot" aria-label="About WhichTalk">
   <div class="tile t-state">
     <p class="big">Which talk are you going to? Now you can answer.</p>
-    <p class="legal">WhichTalk is an unofficial, community-built planner. It is not affiliated with or endorsed by any conference organizer. Program data comes from the official conference websites and stays with its organizers and authors. Code under the GNU AGPL v3.0.</p>
+    <p class="legal">WhichTalk is an unofficial, community-built planner. It is not affiliated with or endorsed by any conference organizer. Program data comes from the official conference websites and stays with its organizers and authors. Code under the GNU AGPL v3.0. Visits are counted with GoatCounter, without cookies or anything that identifies you; your plan stays on your device.</p>
   </div>
   <nav class="tile t-nav" aria-label="On this page">
     <ul>
@@ -776,6 +776,16 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
   }, { rootMargin: '0px 0px -8% 0px' })
   for (const el of document.querySelectorAll('.rise')) seen.observe(el)
 })()
+</script>
+<script>
+// Visit counter, only on whichtalk.com: GoatCounter, without cookies or anything that identifies the visitor,
+// and skipped when the browser asks not to be tracked. The same lines are in src/home.html, src/index.html, src/404.html.
+if (location.hostname === 'whichtalk.com' && !navigator.globalPrivacyControl && navigator.doNotTrack !== '1') {
+  addEventListener('load', function () {
+    var q = new URLSearchParams({ p: location.pathname, t: document.title, r: document.referrer, s: [screen.width, screen.height, window.devicePixelRatio || 1].join(','), rnd: String(Math.random()).slice(2) })
+    new Image().src = 'https://whichtalk.goatcounter.com/count?' + q
+  })
+}
 </script>
 </body>
 </html>
