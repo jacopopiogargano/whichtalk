@@ -18,7 +18,9 @@
   .vote,
   .item-actions,
   .page-footer,
-  .tally,
+  .plan-line,
+  .plan-end,
+  .detail-save,
   .timeline {
     display: none !important;
   }

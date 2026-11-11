@@ -1,16 +1,17 @@
-// Interests: weighted search terms that rank suggestions and people to meet. Edited at the top of
-// the account panel with an autocomplete over the conference's own vocabulary; the opt-in bulk
-// imports (papers, website, pasted text) live in profile-import.js.
+// Interests: weighted search terms that rank suggestions and people to meet. Edited with an
+// autocomplete over the conference's own vocabulary: in full at the top of the account panel, and
+// as a compact editor on Today (first visit) and Suggested for you. The opt-in bulk imports
+// (papers, website, pasted text) live in profile-import.js.
 import { h, qs, notify } from '../lib/dom.js'
 import { icon } from '../lib/icons.js'
-import { count, normalize } from '../lib/text.js'
+import { count, num, normalize } from '../lib/text.js'
 import { data, prefs, ui, save } from '../state/store.js'
 import { MAX_INTERESTS } from '../state/sanitize.js'
 import { ensureTermIndex } from '../search/index.js'
 import { rescore, interestQueries, interestCount } from '../search/relevance.js'
 import { autocompleteSearch, suggestTopics } from '../search/extract.js'
 import { highlight } from '../ui/components.js'
-import { hidePanel } from '../ui/overlay.js'
+import { hidePanel, showPanel } from '../ui/overlay.js'
 import { renderAll, navigate } from '../ui/shell.js'
 import { importReview, importersBox } from './profile-import.js'
 
@@ -75,10 +76,10 @@ function clearInterests () {
 }
 
 // Combobox: suggestions from the catalog's topics and frequent title phrases, plus an "as typed"
-// entry. Arrow keys move, Enter adds, Escape closes.
-function interestInput () {
-  const inputId = 'interest-input'
-  const menuId = 'interest-options'
+// entry. Arrow keys move, Enter adds, Escape closes. The id keeps the panel's copy and the page's
+// copy apart (both can be on screen).
+function interestInput (inputId = 'interest-input') {
+  const menuId = inputId + '-options'
   const input = h('input', {
     id: inputId,
     placeholder: 'Add a topic, keyword, author or lab',
@@ -184,20 +185,44 @@ function interestList () {
   return h('div', { class: 'interest-list' }, data.interests.map(interestRow))
 }
 
+// Popular topics the interests do not already cover, as one-tap buttons.
+function popularRow (label, limit) {
+  const have = data.interests.map(x => normalize(x.text))
+  const popular = suggestTopics().filter(topic => !have.some(k => normalize(topic).startsWith(k))).slice(0, limit)
+  return popular.length
+    ? h('div', { class: 'quick-adds' }, h('span', {}, label), popular.map(topic => h('button', { onclick: () => addInterest(topic, 1, 'topic') }, topic)))
+    : null
+}
+
+const openImports = () => { ui.importOpen = true; showPanel('you') }
+
+// The compact editor: the field, the interests as removable chips, popular topics while there are
+// few, and the imports and the full editor (weights, pause) one tap away.
+export function interestQuickEditor () {
+  ensureTermIndex()
+  const chips = data.interests.map((interest, at) => h('span', { class: interest.active ? 'interest-chip' : 'interest-chip is-paused' },
+    h('span', {}, interest.text),
+    h('small', { title: count(interestCount[at] || 0, 'match', 'matches') }, num(interestCount[at] || 0)),
+    h('button', { 'aria-label': `Remove ${interest.text}`, title: 'Remove', onclick: () => removeInterest(at) }, icon('x'))))
+  return h('div', { class: 'quick-interests' },
+    interestInput('interest-inline'),
+    chips.length ? h('div', { class: 'interest-chips' }, chips) : null,
+    data.interests.length < 5 ? popularRow(data.interests.length ? 'More:' : 'Popular:', 8) : null,
+    h('p', { class: 'quick-links' },
+      h('button', { class: 'text-button', onclick: openImports }, 'Import from your papers or website'),
+      data.interests.length ? h('button', { class: 'text-button', onclick: () => showPanel('you') }, 'Weights and pausing') : null))
+}
+
 // The interests part of the account panel: a pending import review first, then the editor,
 // popular topics not yet covered, and the importers (their open state survives re-renders).
 export function interestSections () {
   ensureTermIndex()
-  const have = data.interests.map(x => normalize(x.text))
-  const popular = suggestTopics().filter(topic => !have.some(k => normalize(topic).startsWith(k))).slice(0, 10)
   const editor = h('div', { class: 'overlay-section', id: 'interest-editor' },
     h('h3', {}, 'Interests'),
     h('p', { class: 'section-note' }, 'They rank Today’s suggestions, Suggested for you, and people to meet. Higher weight ranks matches higher.'),
     interestInput(),
     interestList(),
-    popular.length
-      ? h('div', { class: 'quick-adds' }, h('span', {}, 'Popular:'), popular.map(topic => h('button', { onclick: () => addInterest(topic, 1, 'topic') }, topic)))
-      : null,
+    popularRow('Popular:', 10),
     data.interests.length
       ? h('div', { class: 'actions' },
         h('button', { class: 'button', onclick: () => { hidePanel(); navigate('foryou') } }, 'See suggestions'),

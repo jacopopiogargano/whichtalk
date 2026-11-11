@@ -24,7 +24,6 @@ import { planCounts, choiceGroup } from './today.js'
 import { renderPeopleSection, renderNotesSection } from './people.js'
 import { renderTeamSection } from './team.js'
 import { openExportPanel } from './reading.js'
-import { openSyncPanel } from './sync.js'
 
 const MY_PLAN_TABS = [['sessions', 'Agenda'], ['people', 'People'], ['notes', 'Notes'], ['team', 'Team']]
 
@@ -87,8 +86,8 @@ export function renderPlan (container) {
   container.append(pageHead('My plan', [
     count(n.starred, 'saved item'),
     n.overlaps && h('span', { class: 'text-clash' }, count(n.overlaps, 'overlap')),
-    `${count(n.toMeet, 'person', 'people')} to meet`,
-    count(n.notes, 'note'),
+    n.toMeet && `${count(n.toMeet, 'person', 'people')} to meet`,
+    n.notes && count(n.notes, 'note'),
   ]))
   container.append(h('div', { class: 'toggle-group is-wide', role: 'tablist', 'aria-label': 'My plan' }, MY_PLAN_TABS.map(([key, label]) => {
     const current = prefs.planSection === key ? 'true' : 'false'
@@ -106,15 +105,15 @@ export function renderPlan (container) {
   else renderNotesSection(container)
 }
 
+// Layout, share and export only once there is something to show; syncing lives under You, and
+// Clear at the end of the list.
 function myPlanControls (items, layout) {
   return [
-    choiceGroup('Layout', [['list', 'List'], ['week', 'Week']], layout, value => { prefs.planLayout = value; save(); renderPage() }),
+    items.length ? choiceGroup('Layout', [['list', 'List'], ['week', 'Week']], layout, value => { prefs.planLayout = value; save(); renderPage() }) : null,
     h('button', { class: 'button', id: 'add-personal', onclick: () => openPersonalForm(null) }, icon('plus'), 'Event'),
     h('span', { class: 'fill' }),
-    h('button', { class: 'text-button', onclick: () => shareMyPlan(), disabled: !items.length }, 'Share'),
-    h('button', { class: 'text-button', onclick: () => openExportPanel(), disabled: !items.length }, 'Export'),
-    h('button', { class: 'text-button', onclick: () => openSyncPanel() }, 'Sync'),
-    items.length ? h('button', { class: 'text-button is-danger', onclick: myPlanClear }, 'Clear') : null,
+    items.length ? h('button', { class: 'text-button', onclick: () => shareMyPlan() }, 'Share') : null,
+    items.length ? h('button', { class: 'text-button', onclick: () => openExportPanel() }, 'Export') : null,
   ]
 }
 
@@ -143,6 +142,7 @@ function myPlanAgenda (container, shared) {
   if (layout === 'week' && timed.length) container.append(myPlanWeek(timed, shared))
   else myPlanDays(container, timed, shared)
   if (untimed.length) container.append(section('Time not yet published', null, untimed.map(e => eventItem(e, { time: true, plan: !shared }))))
+  if (!shared && data.starred.size) container.append(h('p', { class: 'plan-end' }, h('button', { class: 'text-button is-danger', onclick: myPlanClear }, 'Clear My plan')))
 }
 
 function myPlanWeekBlock (e, overlapsWith) {

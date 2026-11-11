@@ -26,6 +26,20 @@ export const LOCATIONS = Object.fromEntries(conferenceSettings.locations.map(loc
 // The "every site" pseudo-location, if the conference has one.
 export const ALL_LOCATION = (conferenceSettings.locations.find(loc => loc.all) || { key: null }).key
 export const HAS_LOCATION_CHOICE = conferenceSettings.locations.length > 1
+// The real sites, without the "every site" entry: what a first visit is asked to choose from.
+export const SITE_KEYS = conferenceSettings.locations.filter(loc => !loc.all).map(loc => loc.key)
+
+// First visit, nothing stored yet: the site whose UTC offset is closest to this device's (a
+// conference split between Sydney, Paris and Atlanta opens on Paris in Europe). Ties keep the
+// config order, so the main site wins them.
+export function guessLocation () {
+  if (SITE_KEYS.length < 2) return DEFAULT_LOCATION
+  let here
+  try { here = -new Date().getTimezoneOffset() / 60 } catch (err) { return DEFAULT_LOCATION }
+  if (!Number.isFinite(here)) return DEFAULT_LOCATION
+  const apart = key => { const d = Math.abs(LOCATIONS[key].tz - here) % 24; return Math.min(d, 24 - d) }
+  return SITE_KEYS.reduce((best, key) => (apart(key) < apart(best) ? key : best), SITE_KEYS[0])
+}
 
 export const TRACKS = conferenceSettings.tracks.map((track, rank) => ({
   key: track.key, label: track.label, singular: track.singular, kinds: [...track.kinds], rank,

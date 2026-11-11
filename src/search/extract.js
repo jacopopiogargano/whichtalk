@@ -44,8 +44,22 @@ export function autocompleteSearch (query, limit = 8) {
   return ranked.sort((a, b) => b.s - a.s).slice(0, limit).map(r => r.item)
 }
 
+// Words that qualify a topic without being one: a phrase made only of them ("real world", "test
+// time", "fine grained") is a poor popular topic, though it stays available while typing.
+const MODIFIER_WORDS = new Set(('real world test time fine grained large scale high low dimensional end long short term open source ' +
+  'zero few shot state art based free efficient aware guided driven level wise step order first second multi single non').split(' '))
+
+// Popular topics, most common first. A fragment of a longer phrase about as common is left out
+// ("large language" next to "large language models"), and so is a phrase that only narrows a far
+// more common one ("deep reinforcement learning" next to "reinforcement learning").
 export function suggestTopics () {
-  return prepareAutocomplete().filter(c => c.kind === 'topic' || c.n >= 40).sort((a, b) => b.n - a.n).map(c => c.label)
+  const pool = prepareAutocomplete()
+    .filter(c => c.kind === 'topic' || (c.n >= 40 && !c.words.every(w => MODIFIER_WORDS.has(w.w))))
+    .sort((a, b) => b.n - a.n)
+  const covered = c => pool.some(d => d !== c && d.folded.length > c.folded.length && containsPhrase(d.folded, c.folded) && d.n >= 0.5 * c.n)
+  const kept = pool.filter(c => !covered(c))
+  const narrows = c => kept.some(d => d !== c && d.folded.length < c.folded.length && containsPhrase(c.folded, d.folded) && d.n >= 2 * c.n)
+  return kept.filter(c => !narrows(c)).map(c => c.label)
 }
 
 // Words that are everywhere on personal and lab pages but say nothing about research topics.

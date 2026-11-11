@@ -185,3 +185,9 @@
     width: 130px;
   }
 }
+
+/* Clear My plan, at the end of the list rather than next to Share and Export. */
+.plan-end {
+  margin-top: 28px;
+  font-size: 14px;
+}

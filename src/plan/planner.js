@@ -200,6 +200,8 @@ export function plannerPanel () {
       draft.add.length || draft.remove.length
         ? h('div', { class: 'panel' }, draft.add.map(c => plannerDraftRow(c, true)), removals.map(c => plannerDraftRow(c, false)))
         : h('p', { class: 'section-note' }, 'Nothing to change: your day already fits these options.'),
-      h('p', { class: 'section-note' }, `${count(draft.locked.length, 'item')} kept as is.${VENUE ? ' Walking times are estimates.' : ''}`)),
+      draft.locked.length || VENUE
+        ? h('p', { class: 'section-note' }, [draft.locked.length && `${count(draft.locked.length, 'item')} kept as is.`, VENUE && 'Walking times are estimates.'].filter(Boolean).join(' '))
+        : null),
   ]
 }
