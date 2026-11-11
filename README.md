@@ -9,7 +9,7 @@ top of one shared app. Now live for NeurIPS 2026 (Sydney, Paris and Atlanta):
 
 **Add your conference:** see [CONTRIBUTING.md](CONTRIBUTING.md). Usually no code is needed.
 
-No login, no server, no tracking: everything you save stays on your device.
+No login, no server, no cookies: everything you save stays on your device.
 
 > Unofficial. WhichTalk is not affiliated with or endorsed by any conference organizer,
 > including the NeurIPS Foundation. Check each conference's official schedule.
