@@ -3,6 +3,9 @@
 WhichTalk is one planner app shared by every conference. Each conference is a folder of
 settings and data in `conferences/`, so adding one usually takes no code at all.
 
+Working with a coding agent? Point it at [AGENTS.md](AGENTS.md): the same steps, in order, with
+the rules it must follow.
+
 ## Add a conference
 
 1. **Check the data can be used.** Use only the public program (titles, speakers, rooms, times,
