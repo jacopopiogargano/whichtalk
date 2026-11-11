@@ -21,7 +21,7 @@ import { buildIcs } from '../plan/calendar.js'
 import { addInterest } from '../views/profile.js'
 import { findContact, addContact } from '../views/people.js'
 import { isPaper, toggleReadMark } from '../views/reading.js'
-import { highlight, reasonsRow, wasChanged, paperItem, lazyList, observers } from './components.js'
+import { highlight, reasonsRow, wasChanged, paperItem, lazyList, observers, starToggle } from './components.js'
 import { showEvent, renderOverlay, clashSection } from './overlay.js'
 import { setSearching } from './shell.js'
 
@@ -155,7 +155,8 @@ function readingSwitch (e) {
 
 export function eventDetailView (e) {
   if (e.personal) return personalDetailView(e)
-  const view = h('div', { class: 'detail' }, h('h2', null, highlight(e.title, true)), detailFacts(e))
+  const view = h('div', { class: 'detail' }, h('h2', null, highlight(e.title, true)), detailFacts(e),
+    h('div', { class: 'detail-save' }, starToggle(e, 'button', true)))
   if (wasChanged(e.id)) {
     view.append(h('p', { class: 'walk-note is-warn' }, 'Changed since your last visit. Details under Today.'))
     markChangesSeen([e.id])

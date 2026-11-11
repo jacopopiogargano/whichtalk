@@ -7,11 +7,10 @@ import { count } from '../lib/text.js'
 import { isGroupEvent } from '../data/catalog.js'
 import { LOCATIONS } from '../data/conference.js'
 import { prefs, ui, save } from '../state/store.js'
-import { backupDue } from '../state/persistence.js'
 import { resetHighlights, rescore } from '../search/relevance.js'
 import { activeTerms, setQuery, matchesQuery, topLevel, childrenHere, locationDays, bumpGeneration } from '../plan/filters.js'
 import { rebuildPersonalEvents } from '../plan/personal.js'
-import { renderToday, renderPicks, planCounts } from '../views/today.js'
+import { renderToday, renderPicks, planCounts, backupReminderDue } from '../views/today.js'
 import { renderSchedule, renderSearch, dayPickerView } from '../views/schedule.js'
 import { renderPlan, sharedPlanNotice } from '../views/plan.js'
 import { importBackupFile } from '../views/settings.js'
@@ -78,7 +77,7 @@ export function renderRail () {
   qs('#search-field').hidden = !searching
   qs('#search-clear').hidden = !ui.query
   const account = qs('#account-button')
-  const due = backupDue()
+  const due = backupReminderDue()
   account.setAttribute('aria-pressed', ui.panel === 'you' ? 'true' : 'false')
   account.classList.toggle('has-alert', due)
   account.title = due ? 'You: interests, sync and backup (not backed up yet)' : 'You: interests, sync and backup'
@@ -146,6 +145,7 @@ export function pickDefaultDay () {
 
 export function chooseLocation (key) {
   prefs.location = key
+  prefs.siteChosen = true
   setZoneOffset(LOCATIONS[key].tz)
   if (prefs.day !== 'tba' && !locationDays().includes(prefs.day)) prefs.day = pickDefaultDay()
   rebuildPersonalEvents()

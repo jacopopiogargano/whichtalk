@@ -91,21 +91,29 @@ async function closeDialog (p) {
   await p.waitFor(k => [...document.querySelectorAll('dialog')].filter(d => d.open).length < k, [n], { message: 'dialog to close' })
 }
 
-// Today's four numbers: { Saved: ['1', 'Sessions in your plan'], ... } from the "Your plan" group.
-const tally = p => p.eval(() => {
-  const g = document.querySelector('[role=group][aria-label="Your plan"]')
-  if (!g) return null
-  const leaves = el => { const out = []; const walk = n => { for (const c of n.childNodes) { if (c.nodeType === 3) { const s = c.textContent.trim(); if (s) out.push(s) } else if (c.nodeType === 1) walk(c) } }; walk(el); return out }
-  return Object.fromEntries([...g.querySelectorAll('button')].map(b => { const [k, v, ...rest] = leaves(b); return [k, [v, rest.join(' ')]] }))
-})
-async function waitTally (p, want) {
-  await p.waitFor((w) => {
-    const g = document.querySelector('[role=group][aria-label="Your plan"]')
-    if (!g) return false
-    const t = window.__e2e.norm(g.innerText)
-    return Object.entries(w).every(([k, v]) => [...g.querySelectorAll('button')].some(b => { const s = window.__e2e.norm(b.innerText); return s.startsWith(k) && s.slice(k.length).trim().startsWith(v) })) && t
-  }, [want], { message: `Today tally ${JSON.stringify(want)}` })
+// Today's plan line as numbers: { Saved: '1', Overlaps: '0', 'To meet': '0', Met: '0', Interests: '2' }.
+// The line leaves out zeros (and shows "N met" only once nobody is left to meet), so a missing part is '0'.
+const TALLY_KEYS = { 'saved item': 'Saved', overlap: 'Overlaps', 'to meet': 'To meet', met: 'Met', interest: 'Interests' }
+async function tally (p) {
+  const parts = await p.eval(() => [...document.querySelectorAll('[role=group][aria-label="Your plan"] button')].map(b => window.__e2e.norm(b.innerText)))
+  const out = { Saved: '0', Overlaps: '0', 'To meet': '0', Met: '0', Interests: '0' }
+  for (const part of parts) {
+    const m = part.match(/^([\d,]+) (saved item|overlap|to meet|met|interest)s?$/)
+    if (!m) throw new Error('unexpected plan line part: ' + part)
+    out[TALLY_KEYS[m[2]]] = m[1]
+  }
+  return out
 }
+async function waitTally (p, want) {
+  const end = Date.now() + 8000
+  for (;;) {
+    const got = await tally(p)
+    if (Object.entries(want).every(([k, v]) => got[k] === v)) return got
+    if (Date.now() > end) throw new Error(`timed out waiting for Today tally ${JSON.stringify(want)} (last: ${JSON.stringify(got)})`)
+    await sleep(50)
+  }
+}
+const pressedSite = p => p.eval(() => { const b = document.querySelector('.site-choice [aria-pressed=true]'); return b ? window.__e2e.norm(b.innerText) : null })
 
 async function tab (p, name) {
   await p.click({ role: 'tab', text: new RegExp('^' + name), within: 'body' })
@@ -160,10 +168,12 @@ const scenarios = {
     const tabs = await p.eval(() => window.__e2e.match({ role: 'tab', within: 'body' }).map(e => [window.__e2e.name(e), e.getAttribute('aria-selected')]))
     eq(tabs, [['Today', 'true'], ['Schedule', 'false'], ['My plan', 'false']], 'nav tabs')
     eq(await heading(p), 'Tuesday, December 8', 'Today heading')
-    eq(await tally(p), { Saved: ['0', 'Star sessions in the schedule'], Overlaps: ['0', 'Nothing clashes'], 'People to meet': ['0', 'Add people to meet'], Interests: ['0', 'Add your interests'] }, 'tally')
+    // a first visit: no plan yet, so Today asks for interests and confirms the site guessed from the time zone
+    ok(!(await p.exists({ css: '[role=group][aria-label="Your plan"]', within: 'body' })), 'no plan line on a first visit')
     const t = await pageText(p)
-    for (const s of ['Main conference', 'AEDT', 'Your day', 'Suggested for you', 'Add interests']) has(t, s, 'Today')
-    ok(await p.eval(sel => !!document.querySelector(sel), S.nowRule), 'Now rule on Today')
+    for (const s of ['Main conference', 'AEDT', 'ICC Sydney', 'Where are you attending?', 'What are you into?', 'Browse the schedule']) has(t, s, 'Today')
+    for (const s of ['Your day', 'Suggested for you']) ok(!t.includes(s), `no ${s} on a first visit`)
+    eq(await pressedSite(p), 'Sydney', 'site guessed from the time zone')
     ok(await p.eval(() => window.__ready === true && typeof window.__bootMs === 'number' && typeof window.__indexMs === 'number' && performance.getEntriesByName('app-ready').length === 1), 'boot hooks')
     eq(await p.eval(() => location.hash), '', 'hash on Today')
   },
@@ -347,6 +357,8 @@ const scenarios = {
     await addInterest(p, 'reinforcement learning')
     await waitTally(p, { Interests: '1' })
     await waitText(p, 'Matches reinforcement learning')
+    await waitText(p, 'Your day')
+    ok(await p.eval(sel => !!document.querySelector(sel), S.nowRule), 'Now rule on Today')
     await tab(p, 'Schedule')
     await waitText(p, /[\d,]+ match your interests/)
     await tab(p, 'Today')
@@ -365,7 +377,7 @@ const scenarios = {
     await dialogHeading(p, 'Preview')
     has(await dialogText(p), 'A draft for Tuesday, December 8 from your interests', 'planner draft')
     m = await toastMark(p)
-    await p.click({ text: /^Apply [\d,]+ changes?$/, within: 'dialog' })
+    await p.click({ text: /^Add [\d,]+ items?$/, within: 'dialog' })
     const t = await waitToast(p, /^Plan applied: [\d,]+ items? added/, m)
     const added = t.match(/^Plan applied: ([\d,]+)/)[1]
     ok(Number(added) > 0, 'items added')
@@ -431,8 +443,7 @@ Object.assign(scenarios, {
     await p.click({ text: /^Send the compiler paper/, css: 'label', within: S.page })
     await waitText(p, 'All done')
     await tab(p, 'Today')
-    await waitTally(p, { 'People to meet': '0' })
-    eq((await tally(p))['People to meet'][1], '1 met so far', 'people met caption')
+    await waitTally(p, { 'To meet': '0', Met: '1' })
   },
 
   async backup (ctx) {
@@ -460,7 +471,7 @@ Object.assign(scenarios, {
     await sleep(300)
     await p.clearOriginStorage(new URL(BASE).origin)
     await p.goto(app())
-    await waitTally(p, { Saved: '0', 'People to meet': '0', Interests: '0' })
+    await waitTally(p, { Saved: '0', 'To meet': '0', Interests: '0' })
     await openYou(p)
     await p.chooseFile({ text: 'Restore from a backup file', within: 'dialog' }, tmp)
     await dialogHeading(p, 'Restore from a backup file')
@@ -469,7 +480,7 @@ Object.assign(scenarios, {
     await p.click({ text: 'Replace', within: 'dialog' })
     await waitToast(p, /^Restored the backup/, m2)
     await closeDialog(p)
-    await waitTally(p, { Saved: '1', 'People to meet': '1', Interests: '1' })
+    await waitTally(p, { Saved: '1', 'To meet': '1', Interests: '1' })
     fs.rmSync(tmp, { force: true })
   },
 
@@ -540,7 +551,7 @@ Object.assign(scenarios, {
     const m2 = await toastMark(b)
     await b.click({ text: 'Apply', within: 'dialog' })
     await waitToast(b, /^Merged the other device’s data/, m2)
-    await waitTally(b, { Saved: '1', 'People to meet': '1', Interests: '1' })
+    await waitTally(b, { Saved: '1', 'To meet': '1', Interests: '1' })
   },
 
   async calendar (ctx) {
@@ -649,6 +660,34 @@ Object.assign(scenarios, {
     await p.waitFor(() => window.__e2e.prints === 1, [], { message: 'print()' })
     eq(await count(p, S.grid), 0, 'print view uses the list layout')
     await waitText(p, KEYNOTE.title)
+  },
+
+  async site (ctx) {
+    const p = await ctx.open()
+    eq(await pressedSite(p), 'Sydney', 'Sydney guessed')
+    await p.click({ text: 'Paris', within: '.site-choice' })
+    await p.waitFor(() => !document.querySelector('.site-choice'), [], { message: 'site choice to close' })
+    // Paris starts a day later: at NOW (Monday evening there) Today counts down to Wednesday
+    const paris = 'Wednesday, December 9 to Sunday, December 13, Paris'
+    await waitText(p, paris)
+    eq((await hashParams(p)).s, 'PAR', 'site in the hash')
+    await p.goto(app())
+    await waitText(p, paris)
+    ok(!(await p.exists({ css: '.site-choice', within: 'body' })), 'site asked once')
+    // the meta line changes it later
+    await p.click({ text: 'Paris', within: '.intro-meta' })
+    await dialogHeading(p, 'Conference site')
+    await p.click({ text: /^Sydney/, within: 'dialog' })
+    await waitText(p, 'AEDT')
+    // another time zone, a fresh browser: the nearest site is guessed
+    const q = await ctx.open()
+    await q.send('Emulation.setTimezoneOverride', { timezoneId: 'Europe/Rome' })
+    await q.goto('about:blank', { ready: false })
+    await sleep(300)
+    await q.clearOriginStorage(new URL(BASE).origin)
+    await q.goto(app())
+    eq(await pressedSite(q), 'Paris', 'Paris guessed from Europe/Rome')
+    await waitText(q, paris)
   },
 
   async location (ctx) {

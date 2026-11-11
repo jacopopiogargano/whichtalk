@@ -211,3 +211,17 @@
   flex-wrap: wrap;
   margin-top: 8px;
 }
+
+/* The labelled star: the main action of an event's details. */
+.detail-save {
+  margin-top: 16px;
+}
+
+.detail-save .button .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.detail-save .button[aria-pressed=true] .icon {
+  color: var(--color-accent-mark);
+}

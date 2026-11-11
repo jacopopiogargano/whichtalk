@@ -1,12 +1,13 @@
-// Today: what is next, the plan in four numbers, the focus day as an hour strip over one list
-// (a "Now" rule, free gaps that offer picks), three pick cards and people to meet. Also the
+// Today: the site (asked once when the conference has several), what is next, the plan in one
+// line, then either a first-visit card for interests or the focus day as an hour strip over one
+// list (a "Now" rule, free gaps that offer picks), three pick cards and people to meet. Also the
 // "Suggested for you" page opened from Today, and day helpers shared with My plan and the planner.
 import { h } from '../lib/dom.js'
 import { icon } from '../lib/icons.js'
 import { nowSec, dayOf, clock, dayInfo, whenLabel, isOngoing, isOver, countdown, timeAgo } from '../lib/time.js'
 import { num, count, normalize } from '../lib/text.js'
 import { eventsById, kindName } from '../data/catalog.js'
-import { LOCATIONS, CONFERENCE_NAME, CONFERENCE_SHORT, HIDDEN_TRACKS } from '../data/conference.js'
+import { LOCATIONS, CONFERENCE_NAME, CONFERENCE_SHORT, HIDDEN_TRACKS, HAS_LOCATION_CHOICE, SITE_KEYS } from '../data/conference.js'
 import { prefs, data, ui, save } from '../state/store.js'
 import { downloadBackup, backupDue } from '../state/persistence.js'
 import { ensureTermIndex } from '../search/index.js'
@@ -18,10 +19,12 @@ import { personalEvents } from '../plan/personal.js'
 import { openPlanner } from '../plan/planner.js'
 import { changeSummary } from '../plan/changes.js'
 import { eventItem, pickCard, lazyList, pageHead, emptyState, section } from '../ui/components.js'
+import { openDialog, closeDialog } from '../ui/dialog.js'
 import { showEvent, showPanel } from '../ui/overlay.js'
-import { renderPage, navigate, chooseDay } from '../ui/shell.js'
+import { renderPage, navigate, chooseDay, chooseLocation } from '../ui/shell.js'
 import { whereabouts, openPeopleExport } from './people.js'
 import { focusDayPanel, starredOnDay } from './focus-day.js'
+import { interestQuickEditor } from './profile.js'
 
 export function planCounts () {
   let notes = 0
@@ -69,6 +72,46 @@ function todayPhase () {
   return t >= last ? 'after' : 'during'
 }
 
+// Nothing saved, nobody to meet: Today opens on interests instead of an empty day.
+const hasNoPlan = () => !data.starred.size && !data.people.length && !data.personal.length
+
+// The backup reminder (a nudge here, a dot on You) waits for a plan worth keeping and for the trip:
+// from three days before the conference to its end. The You panel always says when the last backup was.
+export function backupReminderDue () {
+  if (hasNoPlan() || !backupDue()) return false
+  const t = nowSec()
+  const { first, last } = todaySpan()
+  return t >= first - 3 * 86400 && t < last
+}
+
+const siteLabel = key => LOCATIONS[key].venue || LOCATIONS[key].name
+
+function openSiteDialog () {
+  const pick = key => () => { closeDialog(); chooseLocation(key) }
+  openDialog('Conference site', h('div', { class: 'panel' }, Object.keys(LOCATIONS).map(key => {
+    const place = LOCATIONS[key]
+    const current = key === prefs.location
+    return h('button', { class: 'item is-option', 'aria-pressed': current ? 'true' : 'false', onclick: pick(key) },
+      h('span', { class: 'item-body' }, h('span', { class: 'item-title' }, place.name),
+        h('span', { class: 'item-meta' }, [place.venue !== place.name && place.venue, place.zone].filter(Boolean).join(', '))),
+      current ? h('span', { class: 'item-chevron' }, icon('check')) : null)
+  })), [h('button', { class: 'button', onclick: () => closeDialog() }, 'Cancel')])
+}
+
+// The site in the meta line, a button when there is a choice.
+const siteNode = () => (HAS_LOCATION_CHOICE
+  ? h('button', { class: 'inline-link', title: 'Change the conference site', onclick: openSiteDialog }, siteLabel(prefs.location))
+  : siteLabel(prefs.location))
+
+// Asked once: the site pre-set from the time zone, one tap to confirm or change it.
+function siteChoice () {
+  if (!HAS_LOCATION_CHOICE || prefs.siteChosen) return null
+  return h('div', { class: 'site-choice' },
+    h('p', {}, h('b', {}, 'Where are you attending?'), ' ', h('span', {}, 'Picked from your time zone; tap to confirm.')),
+    h('div', { class: 'toggle-group', role: 'group', 'aria-label': 'Conference site' }, SITE_KEYS.map(key =>
+      h('button', { 'aria-pressed': key === prefs.location ? 'true' : 'false', onclick: () => chooseLocation(key) }, LOCATIONS[key].name))))
+}
+
 // Before the conference: its first day; after it: its last; during: today, or the next day with sessions.
 function todayFocusDay (phase) {
   const days = locationDays()
@@ -102,17 +145,14 @@ export const dayWindow = k => memo('bounds' + k, () => {
 
 const todayOpenPlan = name => { prefs.planSection = name; navigate('plan') }
 
-function todayNudges (phase, k) {
+function todayNudges () {
   const counts = planCounts()
   const nudge = (label, run) => h('button', { class: 'nudge', onclick: run }, label)
   const out = []
   // Overlaps already show in the numbers above, so they are not repeated here.
   if (counts.openTodos) out.push(nudge(count(counts.openTodos, 'open follow-up'), () => todayOpenPlan('notes')))
-  if (data.interests.length && SCORES && !starredOnDay(k).length && phase !== 'after') {
-    out.push(nudge(`Add top picks for ${phase === 'before' ? 'Day 1' : 'the day'}`, () => addBestPicks([k])))
-  }
-  if (backupDue()) {
-    out.push(nudge(prefs.lastBackupAt ? `Last backup ${timeAgo(prefs.lastBackupAt)}. Back up` : 'Back up your data', () => downloadBackup()))
+  if (backupReminderDue()) {
+    out.push(nudge(prefs.lastBackupAt ? `Last backup ${timeAgo(prefs.lastBackupAt)}. Back up` : 'Back up your plan', () => downloadBackup()))
   }
   return out.length ? h('p', { class: 'nudges' }, out) : null
 }
@@ -137,22 +177,26 @@ function todayNextUp (phase) {
     next ? line('Next', next, dayOf(next.start) === dayOf(t) ? clock(next.start) : whenLabel(next)) : null)
 }
 
-// The plan in four numbers. Each cell opens the place where its number changes; an empty cell
-// says what to do instead.
-function todayTally () {
+// The plan in one line. Each part opens the place where it changes; zeros are left out.
+function todayPlanLine () {
   const n = planCounts()
-  const cell = (label, value, note, run, modifier) => h('button', { class: 'tally-cell', onclick: run },
-    h('span', { class: 'tally-label' }, label),
-    h('span', { class: 'tally-value' + (modifier ? ' ' + modifier : '') }, num(value)),
-    h('span', { class: 'tally-note' }, note))
-  const toSessions = () => todayOpenPlan('sessions')
-  return h('div', { class: 'tally', role: 'group', 'aria-label': 'Your plan' },
-    cell('Saved', n.starred, n.starred ? 'Sessions in your plan' : 'Star sessions in the schedule',
-      n.starred ? toSessions : () => navigate('schedule'), n.starred ? '' : 'is-zero'),
-    cell('Overlaps', n.overlaps, n.overlaps ? 'Resolve them in My plan' : 'Nothing clashes', toSessions, n.overlaps ? 'is-warn' : 'is-zero'),
-    cell('People to meet', n.toMeet, n.toMeet || n.met ? `${num(n.met)} met so far` : 'Add people to meet',
-      () => todayOpenPlan('people'), n.toMeet ? '' : 'is-zero'),
-    cell('Interests', n.interests, n.interests ? 'Ranking every session' : 'Add your interests', () => showPanel('you'), n.interests ? '' : 'is-zero'))
+  const part = (text, run, cls) => h('button', { class: cls ? `plan-part ${cls}` : 'plan-part', onclick: run }, text)
+  const parts = [
+    n.starred ? part(count(n.starred, 'saved item'), () => todayOpenPlan('sessions')) : null,
+    n.overlaps ? part(count(n.overlaps, 'overlap'), () => todayOpenPlan('sessions'), 'is-warn') : null,
+    n.toMeet ? part(`${num(n.toMeet)} to meet`, () => todayOpenPlan('people')) : n.met ? part(`${num(n.met)} met`, () => todayOpenPlan('people')) : null,
+    n.interests ? part(count(n.interests, 'interest'), () => navigate('foryou')) : null,
+  ].filter(Boolean)
+  return parts.length ? h('p', { class: 'plan-line', role: 'group', 'aria-label': 'Your plan' }, parts) : null
+}
+
+function todayWelcome () {
+  const have = data.interests.length > 0
+  return h('section', { class: 'section today-welcome' },
+    h('div', { class: 'section-head' }, h('h2', {}, have ? 'Your interests' : 'What are you into?'),
+      h('button', { class: 'text-button', onclick: () => navigate('schedule') }, 'Browse the schedule')),
+    have ? null : h('p', { class: 'section-note' }, 'Add a few topics, authors or labs and every session is ranked for you. It stays on this device.'),
+    h('div', { class: 'panel is-padded' }, interestQuickEditor()))
 }
 
 function todayRecap () {
@@ -179,7 +223,7 @@ function todayPicksSection (k, offered) {
   if (!hasInterests) {
     body = h('div', { class: 'panel is-padded' },
       h('p', {}, 'Add a few interests and the best matches for each day appear here.'),
-      h('button', { class: 'button is-primary', onclick: () => showPanel('you') }, 'Add interests'))
+      h('button', { class: 'button is-primary', onclick: () => navigate('foryou') }, 'Add interests'))
   } else if (!SCORES) {
     body = h('div', { class: 'pick-grid' }, [0, 1, 2].map(() => h('div', { class: 'pick-card is-skeleton' })))
   } else {
@@ -220,34 +264,41 @@ export function renderToday (container) {
   const isToday = phase === 'during' && dayOf(t) === k
   const loc = LOCATIONS[prefs.location]
   let title = `${CONFERENCE_NAME} has ended`
-  let meta = 'Your plan, people and notes stay here.'
+  let meta = ['Your plan, people and notes stay here.']
   if (phase === 'during') {
     title = dayInfo(k).long
-    meta = [dayTitle(k), `${clock(t)} ${loc.zone}`, loc.venue].filter(Boolean).join(', ')
+    meta = [[dayTitle(k), `${clock(t)} ${loc.zone}`].filter(Boolean).join(', '), ', ', siteNode()]
   } else if (phase === 'before') {
     title = `${CONFERENCE_SHORT} starts ${countdown(todaySpan().first - t)}`
-    meta = `${dayInfo(days[0]).long} to ${dayInfo(days[days.length - 1]).long}, ${loc.venue || loc.name}`
+    meta = [`${dayInfo(days[0]).long} to ${dayInfo(days[days.length - 1]).long}, `, siteNode()]
   }
+  const fresh = hasNoPlan()
   const changes = changeSummary()
   container.append(h('section', { class: 'intro' },
     h('h1', { class: 'intro-title' }, title),
     h('p', { class: 'intro-meta' }, meta),
-    todayNextUp(phase),
-    phase === 'after' ? null : todayTally(),
-    todayNudges(phase, k),
+    siteChoice(),
+    fresh ? null : todayNextUp(phase),
+    phase === 'after' ? null : todayPlanLine(),
+    todayNudges(),
     changes ? h('button', { class: 'changes-link', onclick: () => showPanel('changes') }, changes) : null))
   if (phase === 'after') {
     container.append(...todayRecap())
     return
   }
+  // A first visit starts from interests; the day and its suggestions follow once there are some.
+  if (fresh) container.append(todayWelcome())
+  if (fresh && !data.interests.length) return
   const heading = isToday ? 'Your day' : phase === 'before' ? `Day 1, ${dayInfo(k).long}` : dayInfo(k).long
   const offered = new Set()
   container.append(h('section', { class: 'section today-plan' },
     h('div', { class: 'section-head' }, h('h2', {}, heading),
-      data.interests.length ? h('button', { class: 'text-button', onclick: () => openPlanner(k) }, 'Plan my day') : null,
+      data.interests.length && starredOnDay(k).length ? h('button', { class: 'text-button', onclick: () => openPlanner(k) }, 'Plan my day') : null,
       h('button', { class: 'text-button', onclick: () => chooseDay(k) }, 'Full schedule')),
     starredOnDay(k).length ? null
-      : h('p', { class: 'section-note' }, SCORES ? 'Nothing saved for this day yet. Free time below shows suggestions.' : 'Nothing saved for this day yet.'),
+      : h('div', { class: 'day-empty' },
+        h('p', { class: 'section-note' }, SCORES ? 'Nothing saved for this day yet. Free time below shows suggestions.' : 'Nothing saved for this day yet.'),
+        data.interests.length ? h('button', { class: 'button is-primary', onclick: () => openPlanner(k) }, 'Plan my day') : null),
     focusDayPanel(k, isToday, offered)))
   container.append(todayPicksSection(k, offered))
   const meet = todayMeetSection(k)
@@ -258,9 +309,9 @@ export function renderToday (container) {
 export function renderPicks (container) {
   ensureTermIndex()
   const back = h('button', { class: 'crumb', onclick: () => navigate('today') }, icon('back'), 'Today')
-  const editInterests = (label, cls) => h('button', { class: cls, onclick: () => showPanel('you') }, label)
+  const editor = h('div', { class: 'panel is-padded picks-interests' }, interestQuickEditor())
   if (!data.interests.length) {
-    container.append(back, pageHead('Suggested for you', 'Add interests to rank every session for you.', editInterests('Add interests', 'button is-primary')))
+    container.append(back, pageHead('Suggested for you', 'Add a few topics, authors or labs and every session is ranked for you.'), editor)
     return
   }
   const active = data.interests.filter(it => it.active).length
@@ -271,8 +322,8 @@ export function renderPicks (container) {
     : `${count(list.length, 'suggestion')} from ${count(active, 'active interest')}`
   container.append(back, pageHead('Suggested for you', [summary],
     choiceGroup('Layout', [['ranked', 'Ranked'], ['by-day', 'By day']], prefs.picksLayout, value => { prefs.picksLayout = value; save(); renderPage() }),
-    list.length ? h('button', { class: 'button is-primary', onclick: () => addBestPicks(locationDays()) }, 'Add top picks') : null,
-    editInterests('Edit interests', 'button')))
+    list.length ? h('button', { class: 'button is-primary', onclick: () => addBestPicks(locationDays()) }, 'Add top picks') : null),
+  editor)
   if (!active) { container.append(emptyState('All interests are paused', 'Resume one under You, Interests.')); return }
   if (!list.length) { container.append(emptyState('No suggestions yet', 'Try broader interests, or show more session types in the Schedule filter.')); return }
   if (prefs.picksLayout === 'by-day') {

@@ -13,7 +13,7 @@ import { changesPanel } from '../plan/changes.js'
 import { activeFilterCount, resetFilters, filterPanel } from '../views/schedule.js'
 import { showAlternatives } from '../views/plan.js'
 import { accountPanel } from '../views/settings.js'
-import { observers, starToggle } from './components.js'
+import { observers } from './components.js'
 import { eventDetailView, groupDetailView } from './detail.js'
 import { renderRail } from './shell.js'
 import { writeHash, pageUrl } from './router.js'
@@ -127,12 +127,15 @@ function panelParts (panel) {
   // The planner panel computes ui.plannerDraft, so the body is built before the Apply button.
   const head = overlayHead(`Plan ${dayInfo(ui.plannerDay).long}`, hidePanel, OVERLAY_TITLE_ID)
   const body = plannerPanel()
+  // Counted in items, like the toast after applying: a poster visit adds each of its posters.
   const draft = ui.plannerDraft
-  const changes = draft ? draft.add.length + draft.remove.length : 0
+  const adding = draft ? draft.add.reduce((sum, c) => sum + c.items.length, 0) : 0
+  const removing = draft ? draft.remove.length : 0
+  const label = [adding && `Add ${count(adding, 'item')}`, removing && `${adding ? 'remove' : 'Remove'} ${removing}`].filter(Boolean).join(', ')
   const foot = h('div', { class: 'overlay-foot' },
     h('button', { class: 'button', onclick: hidePanel }, 'Cancel'),
-    h('button', { class: 'button is-primary', id: 'planner-apply', disabled: !changes || null, onclick: () => applyDraftPlan(ui.plannerDraft) },
-      changes ? `Apply ${count(changes, 'change')}` : 'Apply'))
+    h('button', { class: 'button is-primary', id: 'planner-apply', disabled: !(adding || removing) || null, onclick: () => applyDraftPlan(ui.plannerDraft) },
+      label || 'Apply'))
   return { head, body, foot }
 }
 
@@ -142,7 +145,7 @@ function selectionParts (picked) {
   const e = eventsById.get(picked.id)
   const copyLink = h('button', { class: 'icon-button', 'aria-label': 'Copy link to this item', title: 'Copy link', onclick: () => copyText(pageUrl() + '#e=' + e.id, 'Link copied') }, icon('link'))
   return {
-    head: overlayHead(kindName(e), closeOverlay, OVERLAY_TITLE_ID, back, e.personal ? null : starToggle(e, 'icon-button'), copyLink),
+    head: overlayHead(kindName(e), closeOverlay, OVERLAY_TITLE_ID, back, copyLink),
     body: eventDetailView(e),
   }
 }

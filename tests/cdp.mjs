@@ -136,6 +136,8 @@ export class Page {
     await Promise.all(['Page.enable', 'Runtime.enable', 'Log.enable', 'DOM.enable'].map(m => this.send(m)))
     const { width, height } = this.browser.size
     await this.send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: false })
+    // The planner guesses the conference site from the time zone: pin it to the main site's.
+    await this.send('Emulation.setTimezoneOverride', { timezoneId: 'Australia/Sydney' })
     await this.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }, { name: 'prefers-color-scheme', value: 'light' }] })
     await this.browser.send('Browser.setDownloadBehavior', { behavior: 'deny', browserContextId: this.contextId })
     await this.send('Page.setInterceptFileChooserDialog', { enabled: true })

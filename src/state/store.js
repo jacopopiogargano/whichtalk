@@ -5,7 +5,7 @@
 // - ui: runtime only.
 // localStorage is read synchronously here so the first render already shows the user's plan;
 // IndexedDB is reconciled later (persistence.js).
-import { DEFAULT_LOCATION, DEFAULT_TRACKS, LOCATIONS, STORAGE_NAMESPACE } from '../data/conference.js'
+import { DEFAULT_TRACKS, LOCATIONS, STORAGE_NAMESPACE, guessLocation } from '../data/conference.js'
 import { notify } from '../lib/dom.js'
 import { sanitizeData } from './sanitize.js'
 import { askPersistentStorage, scheduleDatabaseWrite, takeSnapshot } from './persistence.js'
@@ -29,12 +29,15 @@ const PLANNER_DEFAULTS = { pace: 'normal', lunch: true, lunchFrom: 720, lunchTo:
 const enumOr = (value, allowed) => (allowed.includes(value) ? value : allowed[0])
 
 function readStoredPrefs () {
-  const location = local.get('location', DEFAULT_LOCATION)
+  const location = local.get('location', null)
   const tracks = local.get('tracks', null)
   const reminder = local.get('reminderMinutes', 10)
   const changeLog = local.get('changeLog', null)
   return {
-    location: LOCATIONS[location] ? location : DEFAULT_LOCATION,
+    // Nothing stored: a guess from the device's time zone, confirmed on Today (siteChosen).
+    location: LOCATIONS[location] ? location : guessLocation(),
+    // Someone who used the planner before this question existed already has a location stored.
+    siteChosen: local.get('siteChosen', location !== null),
     day: local.get('day', null),
     tracks: new Set(Array.isArray(tracks) ? tracks : DEFAULT_TRACKS),
     onlyMatches: local.get('onlyMatches', false),
@@ -57,7 +60,7 @@ function readStoredPrefs () {
 }
 
 // Prefs written by save() and included in backups; changeLog is saved but stays out of backups.
-const SAVED_PREF_KEYS = ['location', 'day', 'tracks', 'onlyMatches', 'hidePast', 'theme', 'scheduleLayout', 'planSection', 'planLayout',
+const SAVED_PREF_KEYS = ['location', 'siteChosen', 'day', 'tracks', 'onlyMatches', 'hidePast', 'theme', 'scheduleLayout', 'planSection', 'planLayout',
   'picksLayout', 'onboarded', 'syncOrigin', 'lastBackupAt', 'reminderMinutes', 'showPersonal', 'plannerOptions', 'displayName']
 const USER_DATA_KEYS = ['starred', 'interests', 'votes', 'people', 'personal', 'readList', 'team', 'assignments', 'visitWindows']
 

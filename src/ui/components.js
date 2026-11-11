@@ -60,14 +60,21 @@ export function highlight (text, deep) {
 }
 
 // ---------- star toggle ----------
+// A labelled star (the event details) says what it does and is the primary action until pressed.
 function paintStar (button, on) {
   button.setAttribute('aria-pressed', on ? 'true' : 'false')
+  if (button.dataset.labelled) {
+    button.classList.toggle('is-primary', !on)
+    button.title = on ? 'Remove from My plan' : 'Save to My plan'
+    button.replaceChildren(icon(on ? 'starFill' : 'star'), on ? 'In My plan' : 'Save to My plan')
+    return
+  }
   button.setAttribute('aria-label', on ? 'Remove from My plan' : 'Save to My plan')
   button.replaceChildren(icon(on ? 'starFill' : 'star'))
 }
 
-export function starToggle (e, cls = 'star-toggle') {
-  const button = h('button', { class: cls, 'data-star': e.id, title: 'Save to My plan', onclick: ev => { ev.stopPropagation(); toggleStar(e.id) } })
+export function starToggle (e, cls = 'star-toggle', labelled = false) {
+  const button = h('button', { class: cls, 'data-star': e.id, 'data-labelled': labelled ? '1' : null, title: 'Save to My plan', onclick: ev => { ev.stopPropagation(); toggleStar(e.id) } })
   paintStar(button, data.starred.has(e.id))
   return button
 }
