@@ -93,6 +93,8 @@ h1 { font-weight: 500; font-size: var(--step-display); line-height: 1; letter-sp
 .lines [data-line] { display: block; }
 .lead { margin-top: 40px; max-width: 44ch; color: var(--night-muted); font-size: var(--step-body); text-wrap: pretty; }
 .lead b { color: var(--night-ink); font-weight: 500; }
+.hero-cta { margin-top: 28px; }
+.hero-cta svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* chips: three real controls set on the sentence */
 .chip { position: absolute; z-index: 2; display: grid; gap: 6px; width: 300px; padding: 12px 16px 14px; border-radius: var(--radius); background: var(--night-3); color: var(--night-ink); text-align: left; font-size: 14px; line-height: 1.3; box-shadow: 0 14px 30px -12px rgba(0, 0, 0, .55); transition: transform .35s var(--ease-out); }
@@ -205,26 +207,13 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
 .add-sec { background: var(--surface); padding: 160px var(--gutter); }
 .add { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); max-width: 1360px; margin: 0 auto; }
 .add-col { grid-column: 3 / span 8; min-width: 0; }
-.calls > li, .call, .resp { min-width: 0; }
 .add .intro { margin-top: 20px; max-width: 46ch; }
-.add .intro + .intro { color: var(--muted); margin-top: 12px; }
-.calls { counter-reset: call; margin-top: 56px; display: grid; gap: 88px; }
-.say { font-size: var(--step-lead); line-height: 1.25; font-weight: 500; letter-spacing: -.01em; }
-.call { display: flex; align-items: flex-start; margin-top: 16px; border-radius: var(--radius); background: var(--tile); }
-.call pre { flex: 1; min-width: 0; }
-.call pre, .resp pre { padding: 20px; font: 400 14px/1.6 var(--mono); white-space: pre-wrap; overflow-wrap: anywhere; }
-.copy { flex: none; height: 36px; min-width: 72px; margin: 12px 12px 12px 0; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); font: 500 14px/1 var(--font); cursor: pointer; transition: background-color .2s, color .2s, border-color .2s; }
-.copy:hover { border-color: var(--ink); }
-.copy.done { background: var(--ink); color: var(--ground); }
-.resp { margin: 16px 0 0 56px; border-radius: var(--radius); background: #0B1220; color: #E6EAF2; }
-.resp .p { color: #8FA0BC; }
-.resp .ok { color: #7DD3FC; }
-.files { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 20px 20px; }
-.files code { padding: 6px 10px; border-radius: 6px; background: #172036; font: 400 14px/1.2 var(--mono); }
-.result { margin: 16px 0 0 56px; width: 760px; max-width: calc(100vw - 2 * var(--gutter)); }
-.result img { width: 760px; border-radius: var(--radius); outline: 1px solid var(--line); outline-offset: -1px; }
-.result figcaption { margin-top: 14px; color: var(--muted); font-size: var(--step-small); }
-.add .btn { margin-top: 72px; }
+.steps { counter-reset: step; margin-top: 48px; display: grid; gap: 28px; list-style: none; padding: 0; }
+.steps li { counter-increment: step; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 12px; font-size: var(--step-body); line-height: 1.5; }
+.steps li::before { content: counter(step); grid-row: span 2; width: 32px; height: 32px; display: grid; place-content: center; border-radius: 50%; background: var(--tile); font-weight: 500; }
+.steps b { font-weight: 500; }
+.steps code { grid-column: 2; justify-self: start; max-width: 100%; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: var(--tile); font: 400 14px/1.4 var(--mono); overflow-wrap: anywhere; }
+.add .btn { margin-top: 56px; }
 
 /* ---------- footer: the last two rows of the board, as tiles ---------- */
 .foot { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px; padding: 12px; }
@@ -292,8 +281,6 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
   .row-hit { grid-template-columns: minmax(0, 1fr) 8.5em 96px; column-gap: 16px; }
   .row .f ~ .f { display: none; }
   .detail { grid-template-columns: 1fr; row-gap: 6px; }
-  .result { width: auto; max-width: none; }
-  .result img { width: 100%; }
   .plate { display: none; }
   .slices { display: grid; grid-template-columns: minmax(0, 1fr); gap: 56px; max-width: 600px; margin: 0 auto; }
   .slice-img { display: flow-root; width: 390px; max-width: 100%; margin: 0 auto; overflow: clip; border-radius: 16px; outline: 1px solid var(--line); outline-offset: -1px; }
@@ -321,13 +308,6 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
   .row .f { display: none; }
   .row.is-open .row-hit { min-height: 84px; }
   .detail { padding: 0 14px 20px; }
-  .call { flex-direction: column; align-items: stretch; }
-  .call pre { padding-bottom: 8px; }
-  .copy { align-self: flex-end; margin: 0 12px 12px 0; }
-  .resp, .result { margin-left: 0; }
-  .result { width: auto; max-width: none; margin-right: calc(-1 * var(--gutter)); overflow: clip; }
-  .result img { width: 760px; max-width: none; border-radius: var(--radius) 0 0 var(--radius); }
-  .result figcaption { padding-right: var(--gutter); }
   .foot { gap: 6px; padding: 8px; }
   .tile { padding: 20px; }
   .t-word { order: -2; min-height: 220px; }
@@ -345,7 +325,7 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
 <header class="hero" id="top">
   <div class="top after">
     <a class="wordmark" href="./" aria-label="WhichTalk, home"><svg viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="n" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#26324D"/><stop offset="1" stop-color="#141C2F"/></linearGradient><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="140" y1="200" x2="372" y2="440"><stop offset="0" stop-color="#0EA5E9"/><stop offset=".55" stop-color="#6366F1"/><stop offset="1" stop-color="#EC4899"/></linearGradient></defs><rect width="512" height="512" rx="112" fill="url(#n)"/><path fill="#0EA5E9" d="M148 0H204L280 170H240Z"/><path fill="#EC4899" d="M364 0H308L232 170H272Z"/><rect x="140" y="178" width="232" height="276" rx="38" fill="#fff"/><rect x="220" y="150" width="72" height="52" rx="14" fill="#0B1220"/><circle cx="256" cy="290" r="46" fill="url(#a)"/><rect x="186" y="360" width="140" height="22" rx="11" fill="#0B1220"/><rect x="210" y="398" width="92" height="16" rx="8" fill="#CBD5E1"/></svg>WhichTalk</a>
-    <a class="btn btn-light" href="neurips/2026/">Open NeurIPS 2026</a>
+    <a class="btn btn-light" href="neurips/2026/" data-planner>Open NeurIPS 2026</a>
   </div>
 
   <div class="hero-body">
@@ -375,6 +355,8 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
     </div>
 
     <p class="lead after"><b>WhichTalk is a free planner for big conferences.</b> The whole program on your phone, working offline, with nothing to sign up for. Move the clock, pick a site: this is the planner answering.</p>
+
+    <p class="hero-cta after"><a class="btn btn-light" href="neurips/2026/" data-planner>Open NeurIPS 2026<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
 
     <div class="answer after" data-ui aria-live="polite" id="answer">
       <div class="ans-rows">
@@ -414,7 +396,7 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
       </ul>
     </div>
     <figure class="confs-film rise" style="--d:2">
-      <div class="film"><video id="film" src="home/planner-loop.mp4" poster="home/planner-loop.jpg" width="300" height="585" muted loop playsinline controls preload="metadata" aria-label="Screen recording of the NeurIPS 2026 planner on a phone"></video></div>
+      <div class="film"><video id="film" src="home/planner-loop.mp4" poster="home/planner-loop.jpg" width="300" height="585" muted loop playsinline preload="metadata" aria-label="Screen recording of the NeurIPS 2026 planner on a phone"></video></div>
       <figcaption class="caption">The NeurIPS 2026 planner on a phone: a search for “abstain”, one oral starred, then My plan.</figcaption>
     </figure>
   </section>
@@ -450,7 +432,7 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
         <li class="note rise" tabindex="0" style="--y:300px;--d:1" data-r="10,272,210,36"><h3>Share, export, sync</h3><p>A read-only link, a calendar file, or a QR code to move it all to another device.</p></li>
         <li class="note rise" tabindex="0" style="--y:630px;--d:2" data-r="94,640,220,84"><h3>Overlaps, named</h3><p>When two items clash, you see which one and other times for the same content.</p></li>
       </ul>
-      <p class="plate-foot rise">No account and no tracking. Your plan is saved in the browser and the planner keeps working without a connection.</p>
+      <p class="plate-foot rise">No account and no cookies. Your plan is saved in the browser and the planner keeps working without a connection.</p>
     </div>
 
     <div class="slices">
@@ -467,7 +449,7 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
         <div class="slice-img" data-ui style="height: 360px"><picture><source srcset="home/my-plan-dark.jpg" media="(prefers-color-scheme: dark)" data-dark><img src="home/my-plan.jpg" width="390" height="800" alt="Two starred items on Wednesday, the second one with a warning that it overlaps a tutorial." loading="lazy" style="margin-top: -380px"></picture></div>
         <div class="slice-notes"><div><h3>One tap to star</h3><p>From any list, search result or detail. Stars stay on this device.</p></div><div><h3>Overlaps, named</h3><p>When two items clash, you see which one and other times for the same content.</p></div></div>
       </div>
-      <p class="caption">No account and no tracking. Your plan is saved in the browser and the planner keeps working without a connection.</p>
+      <p class="caption">No account and no cookies. Your plan is saved in the browser and the planner keeps working without a connection.</p>
     </div>
   </section>
 
@@ -476,36 +458,10 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
       <div class="add-col">
         <h2 id="add-h" class="rise">Add your conference</h2>
         <p class="intro rise">WhichTalk is open source. A conference is one folder: a settings file and the program. Adding one takes no code.</p>
-        <p class="intro rise">You need Python 3.9 or newer and a copy of the repository.</p>
-        <ol class="calls">
-          <li class="rise">
-            <p class="say">First, make the folder.</p>
-            <div class="call"><pre class="cmd"><code>python3 -I whichtalk new yourconf-2027 --name "YourConf 2027"</code></pre><button type="button" class="copy">Copy</button></div>
-            <div class="resp" data-ui><pre><span class="p">created</span> conferences/yourconf-2027
-<span class="p">next: edit its conference.json and program, then run</span>  python3 -I whichtalk check yourconf-2027</pre>
-              <div class="files" aria-label="Files in the new folder"><code>conference.json</code><code>events.json</code><code>README.md</code></div></div>
-          </li>
-          <li class="rise">
-            <p class="say">Then add the program, one entry per item, and check it.</p>
-            <div class="call"><pre><code>{"id": 3, "kind": "Talk",
- "title": "A paper presented in session 1",
- "authors": ["Author One", "Author Two"],
- "room": "Room 101", "start": "2027-06-08T10:30",
- "durationMinutes": 20, "parent": 2}</code></pre><button type="button" class="copy">Copy</button></div>
-            <div class="resp" data-ui><pre><span class="p">$</span> python3 -I whichtalk check yourconf-2027
-<span class="ok">yourconf-2027: ok</span>, 6 events (1 without a time), 2 abstracts</pre></div>
-          </li>
-          <li class="rise">
-            <p class="say">Last, build it and open a pull request.</p>
-            <div class="call"><pre class="cmd"><code>python3 -I whichtalk build yourconf-2027</code></pre><button type="button" class="copy">Copy</button></div>
-            <figure class="result" data-ui>
-              <picture>
-                <source srcset="home/example-schedule-dark.jpg" media="(prefers-color-scheme: dark)" data-dark>
-                <img src="home/example-schedule.jpg" width="760" height="475" alt="The Schedule of ExampleConf 2026 by room: a keynote at 9am in the Auditorium and two talk sessions at 11am, with the red line marking 11:40am." loading="lazy">
-              </picture>
-              <figcaption>ExampleConf 2026, the made-up conference in the repository, built by the same three steps.</figcaption>
-            </figure>
-          </li>
+        <ol class="steps rise">
+          <li><span><b>Make the folder.</b></span> <code>python3 -I whichtalk new yourconf-2027</code></li>
+          <li><span><b>Add the program</b>, one entry per talk, poster or session, and check it.</span> <code>python3 -I whichtalk check yourconf-2027</code></li>
+          <li><span><b>Build it and open a pull request.</b></span> <code>python3 -I whichtalk build yourconf-2027</code></li>
         </ol>
         <a class="btn rise" href="https://github.com/jacopopiogargano/whichtalk/blob/main/CONTRIBUTING.md">Read the contributing guide</a>
       </div>
@@ -705,6 +661,10 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
       state.site = b.dataset.site
       state.open = null
       for (const o of document.querySelectorAll('#sites button')) o.setAttribute('aria-pressed', String(o === b))
+      // The site picked here is the one the planner opens on.
+      for (const a of document.querySelectorAll('a[data-planner]')) {
+        if (a.getAttribute('href').startsWith(PLANNER)) a.setAttribute('href', `${PLANNER}#s=${state.site}`)
+      }
       render()
     })
   }
@@ -725,16 +685,6 @@ h2 { font-size: var(--step-head); font-weight: 500; line-height: 1.05; letter-sp
     note.addEventListener('focus', show)
     note.addEventListener('mouseleave', hide)
     note.addEventListener('blur', hide)
-  }
-
-  // Copy buttons.
-  for (const button of document.querySelectorAll('.copy')) {
-    button.addEventListener('click', async () => {
-      const text = button.parentElement.querySelector('code').textContent
-      try { await navigator.clipboard.writeText(text); button.textContent = 'Copied' } catch (err) { button.textContent = 'Select it' }
-      button.classList.add('done')
-      setTimeout(() => { button.textContent = 'Copy'; button.classList.remove('done') }, 1600)
-    })
   }
 
   // Theme: System follows the device; Light and Dark are kept in this browser.
